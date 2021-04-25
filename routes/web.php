@@ -20,10 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/teacher-login', [App\Http\Controllers\TeacherAuthController::class, 'index'])->name('teacher.loginform');
-Route::post('/teacher-login', [App\Http\Controllers\TeacherAuthController::class, 'login'])->name('teacher.loginform');
+// Route::get('/teacher-login', [App\Http\Controllers\TeacherAuthController::class, 'index'])->name('teacher.loginform');
+Route::post('/teacher-login', [App\Http\Controllers\TeacherAuthController::class, 'login'])->name('teacher.login');
 Route::get('/teacher-login', [App\Http\Controllers\TeacherAuthController::class, 'index'])->name('teacher.loginform');
 Route::get('/teacher-dashboard', [App\Http\Controllers\TeacherController::class, 'dashboard'])->name('teacher.dashboard');
+
+Route::post('/student-login', [App\Http\Controllers\StudentAuthController::class, 'login'])->name('student.login');
+Route::get('/student-login', [App\Http\Controllers\StudentAuthController::class, 'index'])->name('student.loginform');
+Route::get('/student-dashboard', [App\Http\Controllers\StudentController::class, 'dashboard'])->name('student.dashboard');
+
+
 Route::resource('student', App\Http\Controllers\StudentController::class);
 Route::resource('teacher', App\Http\Controllers\TeacherController::class);
 Route::get('schedule/{id}/mark', [App\Http\Controllers\ScheduleController::class,'markForm']);

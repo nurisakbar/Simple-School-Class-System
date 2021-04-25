@@ -30,7 +30,7 @@
                         </tr>
                     </table>
 
-
+                    <h4>LIST STUDENT IN CLASS</h4>
                     <hr>
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
@@ -48,10 +48,10 @@
                                 <td>{{$student->student_id}}</td>
                                 <td>{{$student->name}}</td>
                                 <td>
-                                    {!! Form::text('', 1, ['id'=>'mark-first-'.$student->id,'class'=>'form-control','onKeyup'=>'saveMarkFirst('.$student->id.','.$schedule->id.',1)']) !!}
+                                    {!! Form::text('', $student->first, ['id'=>'mark-first-'.$student->id,'class'=>'form-control','onKeyup'=>'saveMarkFirst('.$student->id.','.$schedule->id.',1)']) !!}
                                 </td>
-                                <td>{!! Form::text('', 1, ['id'=>'mark-mid-'.$student->id,'class'=>'form-control','onKeyup'=>'saveMarkFirst('.$student->id.','.$schedule->id.',2)']) !!}</td>
-                                <td>{!! Form::text('', 1, ['id'=>'mark-final-'.$student->id,'class'=>'form-control','onKeyup'=>'saveMarkFirst('.$student->id.','.$schedule->id.',3)']) !!}</td>
+                                <td>{!! Form::text('', $student->mid, ['id'=>'mark-mid-'.$student->id,'class'=>'form-control','onKeyup'=>'saveMarkFirst('.$student->id.','.$schedule->id.',2)']) !!}</td>
+                                <td>{!! Form::text('', $student->final, ['id'=>'mark-final-'.$student->id,'class'=>'form-control','onKeyup'=>'saveMarkFirst('.$student->id.','.$schedule->id.',3)']) !!}</td>
                             </tr>
                             @endforeach
                         </tbody>

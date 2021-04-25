@@ -16,7 +16,8 @@
                                 <th>Class Name</th>
                                 <th>Student</th>
                                 <th>Schedule</th>
-                                <td width="100">Action</td>
+                                <td width="80">Action</td>
+                                <th width="80"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,6 +31,7 @@
                                         <button class="btn btn-primary" type="submit">Delete</button>
                                     {!! Form::close() !!}
                                 </td>
+                                <td><a href="/class/{{$class->id}}" class="btn btn-primary">Detail</a></td>
                             </tr>
                             @endforeach
                         </tbody>

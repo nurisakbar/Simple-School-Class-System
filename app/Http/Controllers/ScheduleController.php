@@ -17,7 +17,11 @@ class ScheduleController extends Controller
     {
         $schedule         = Schedule::findOrFail($id);
         $data['schedule'] = $schedule;
-        $data['students'] = $schedule->class->student;
+        $data['students'] = \DB::select("select s.id,st.name,st.student_id,m.first,m.mid,m.final
+                                        from schedules as s 
+                                        LEFT JOIN students as st on s.student_class_id=st.student_class_id
+                                        LEFT JOIN marks as m on m.schedule_id=s.id 
+                                        where s.id=$id");
         return view('schedule.mark-form', $data);
     }
 }

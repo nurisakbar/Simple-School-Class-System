@@ -22,7 +22,10 @@ class MaterialFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title'             => $this->faker->sentence($nbWords = 6, $variableNbWords = true),
+            'description'       => $this->faker->text($maxNbChars = 600),
+            'file'              =>  'file.pdf',
+            'schdule_id'        => rand(1, 10),
         ];
     }
 }

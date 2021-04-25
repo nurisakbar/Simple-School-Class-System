@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             StudentClassSeeder::class,
             TeacherSeeder::class,
             CourseSeeder::class,
+            StudentSeeder::class,
             ]);
     }
 }

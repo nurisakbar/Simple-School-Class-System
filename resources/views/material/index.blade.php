@@ -8,8 +8,15 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    <a href="{{route('material.create')}}" class="btn btn-danger">Create Material</a>
-                    <hr>
+                    @if(Auth::check())
+                        <a href="{{route('material.create')}}" class="btn btn-danger">Create Material</a>
+                        <hr>
+                    @else
+                        @include('student.profile')
+                        <h4>My Material</h4>
+                        <hr>
+                    @endif
+                    
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
@@ -17,7 +24,9 @@
                                 <th>Course</th>
                                 <th>Class</th>
                                 <th>File</th>
-                                <th></th>
+                                @if(Auth::check())
+                                    <th></th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -27,11 +36,13 @@
                                 <td>{{$material->schedule->course->name}}</td>
                                 <td>{{$material->schedule->class->name}}</td>
                                 <td>{{$material->file}}</td>
-                                <td>
-                                    {!! Form::open(['route'=>['material.destroy',$material->id],'method'=>'delete']) !!}
-                                        <button class="btn btn-primary" type="submit">Delete</button>
-                                    {!! Form::close() !!}
-                                </td>
+                                @if(Auth::check())
+                                    <td>
+                                        {!! Form::open(['route'=>['material.destroy',$material->id],'method'=>'delete']) !!}
+                                            <button class="btn btn-primary" type="submit">Delete</button>
+                                        {!! Form::close() !!}
+                                    </td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>

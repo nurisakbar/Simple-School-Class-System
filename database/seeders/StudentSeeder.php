@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Student;
 use Illuminate\Database\Seeder;
-use App\Models\Material;
 
-class MaterialSeeder extends Seeder
+class StudentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class MaterialSeeder extends Seeder
      */
     public function run()
     {
-        Material::factory(30)->create();
+        Student::factory(90)->create();
     }
 }

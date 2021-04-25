@@ -6,6 +6,8 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentCreate;
 use App\Models\StudentClass;
+use Auth;
+use App\Models\Schedule;
 
 class StudentController extends Controller
 {
@@ -86,5 +88,15 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         //
+    }
+
+    public function dashboard()
+    {
+        $student            = Auth::guard('student')->user();
+        $data['student']    = $student;
+        $data['schedules']  = Schedule::with('course', 'teacher')->leftJoin('marks', function ($leftJoin) use ($student) {
+            $leftJoin->on('marks.schedule_id', '=', 'schedules.id')->where('schedules.student_class_id', $student->student_class_id)->where('marks.student_id', $student->id);
+        })->get();
+        return view('student.dashboard', $data);
     }
 }

@@ -12,4 +12,10 @@ class StudentClassController extends Controller
         $data['classes'] = StudentClass::all();
         return view('student-class.index', $data);
     }
+
+    public function show($id)
+    {
+        $data['class'] = StudentClass::find($id);
+        return view('student-class.show', $data);
+    }
 }

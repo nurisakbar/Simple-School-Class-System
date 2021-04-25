@@ -9,15 +9,6 @@ class MarkController extends Controller
 {
     public function store(Request $request)
     {
-        // $type = $request->type;
-        // if ($type==1) {
-        //     $fieldMark = "first";
-        // } elseif ($type==2) {
-        //     $fieldMark="mid";
-        // } else {
-        //     $fieldMark = "final";
-        // }
-
         $params = [
             'schedule_id'   =>  $request->schduleId,
             'student_id'    =>  $request->studentId,
