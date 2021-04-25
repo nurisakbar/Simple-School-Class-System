@@ -9,10 +9,11 @@ Simple School class is a system to organize the contact information of the teach
 1. git clone https://github.com/nurisakbar/Simple-School-Class-System.git
 2. cd Simple-School-Class-System
 3. composer install
-4. create new database dan change config in .env file
-5. php artisan migrate --seed ( to migrate and seed dummy data)
-6. php artisan serve
-7. you can access this project with address http://localhost:8000/login
+4. cp .env-example .env
+5. create new database dan change config in .env file
+6. php artisan migrate --seed ( to migrate and seed dummy data)
+7. php artisan serve
+8. you can access this project with address http://localhost:8000/login
 
 ## Admin Login
 You can login as administrator with acount :
