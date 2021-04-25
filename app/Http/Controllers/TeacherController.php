@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\StudentClass;
 use App\Http\Requests\TeacherCreate;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
 {
@@ -49,7 +50,9 @@ class TeacherController extends Controller
      */
     public function store(TeacherCreate $request)
     {
-        Teacher::create($request->all());
+        $input = $request->all();
+        $input['password'] = Hash::make($request->password);
+        Teacher::create($input);
         return redirect('teacher');
     }
 

@@ -8,8 +8,8 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    <a href="{{route('student.create')}}" class="btn btn-danger">Create Class</a>
-                    <hr>
+                    {{-- <a href="{{route('student.create')}}" class="btn btn-danger">Create Class</a>
+                    <hr> --}}
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>

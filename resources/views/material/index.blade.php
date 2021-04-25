@@ -8,7 +8,7 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    @if(Auth::check())
+                    @if(Auth::guard('teacher')->check())
                         <a href="{{route('material.create')}}" class="btn btn-danger">Create Material</a>
                         <hr>
                     @else
@@ -24,7 +24,7 @@
                                 <th>Course</th>
                                 <th>Class</th>
                                 <th>File</th>
-                                @if(Auth::check())
+                                @if(Auth::guard('teacher')->check())
                                     <th></th>
                                 @endif
                             </tr>
@@ -36,7 +36,7 @@
                                 <td>{{$material->schedule->course->name}}</td>
                                 <td>{{$material->schedule->class->name}}</td>
                                 <td>{{$material->file}}</td>
-                                @if(Auth::check())
+                                @if(Auth::guard('teacher')->check())
                                     <td>
                                         {!! Form::open(['route'=>['material.destroy',$material->id],'method'=>'delete']) !!}
                                             <button class="btn btn-primary" type="submit">Delete</button>

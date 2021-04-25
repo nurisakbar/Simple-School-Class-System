@@ -8,6 +8,7 @@ use App\Http\Requests\StudentCreate;
 use App\Models\StudentClass;
 use Auth;
 use App\Models\Schedule;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -41,7 +42,9 @@ class StudentController extends Controller
      */
     public function store(StudentCreate $request)
     {
-        Student::create($request->all());
+        $input = $request->all();
+        $input['password'] = Hash::make($request->password);
+        Student::create($input);
         return redirect('student');
     }
 
