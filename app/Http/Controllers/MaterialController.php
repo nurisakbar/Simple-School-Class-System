@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Material;
 use App\Models\Schedule;
-use Auth;
 use App\Http\Requests\MaterialCreate;
+use Auth;
 
 class materialController extends Controller
 {
