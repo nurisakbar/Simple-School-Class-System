@@ -4,6 +4,16 @@
 
 Simple School class is a system to organize the contact information of the teachers and students and manage the student classes. 
 
+## Feature
+- Manage Teacher
+- Manage Student
+- Manage Classes
+- Manage Schedule
+- Teacher Can Login
+- Teacher Can Upload Material
+- Teacher Can Add Mark With Ajax Process
+- Student Can Login
+- Student Can see list schedule and mark
 
 ## How To Run This Project
 1. git clone https://github.com/nurisakbar/Simple-School-Class-System.git
