@@ -9,6 +9,8 @@ class StudentClass extends Model
 {
     use HasFactory;
 
+    protected $fillable=['name'];
+
     public function schedules()
     {
         return $this->hasMany(\App\Models\Schedule::class);

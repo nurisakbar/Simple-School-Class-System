@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','List Student')
+@section('title','Manage Student Data')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,16 +8,17 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    <a href="{{route('student.create')}}" class="btn btn-danger">Create Student</a>
+                    <a href="{{route('student.create')}}" class="btn btn-danger">Create New Student</a>
                     <hr>
+                    @include('alert')
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>Id</th>
+                                <th>Student ID</th>
                                 <th>Name</th>
                                 <th>Class</th>
                                 <th>Email</th>
-                                <th></th>
+                                <th width="140">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,7 +28,12 @@
                                 <td>{{$student->name}}</td>
                                 <td>{{$student->class->name}}</td>
                                 <td>{{$student->email}}</td>
-                                <td></td>
+                                <td>
+                                    <a href="/class/{{$student->id}}/edit" class="btn btn-primary" style="float:left;margin-right:10px;">Edit</a>
+                                    {!! Form::open(['route'=>['class.destroy',$student->id],'method'=>'delete']) !!}
+                                        <button class="btn btn-primary" type="submit">Delete</button>
+                                    {!! Form::close() !!}
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

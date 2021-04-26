@@ -14,9 +14,9 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th width="40"></th>
-                                <th width="40"></th>
-                                <th width="50"></th>
+                                <th>Phone</th>
+                                <th width="140"></th>
+                                <th width="190">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,13 +24,13 @@
                             <tr>
                                 <td>{{$teacher->name}}</td>
                                 <td>{{$teacher->email}}</td>
+                                <td>{{$teacher->phone}}</td>
                                 <td>
-                                    <a href="{{ route('teacher.show', ['teacher' => $teacher->id])  }}" class="btn btn-primary">Schedule</a>
+                                    <a href="{{ route('teacher.show', ['teacher' => $teacher->id])  }}" class="btn btn-primary">Teaching Schedule</a>
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-primary">Edit</a>
-                                </td>
-                                <td>
+                                    <a href="/class/{{$teacher->id}}" class="btn btn-primary" style="float:left;margin-right:10px;">Detail</a>
+                                    <a href="/class/{{$teacher->id}}/edit" class="btn btn-primary" style="float:left;margin-right:10px;">Edit</a>
                                     {!! Form::open(['route'=>['teacher.destroy',$teacher->id],'method'=>'delete']) !!}
                                         <button class="btn btn-primary" type="submit">Delete</button>
                                     {!! Form::close() !!}

@@ -20,7 +20,7 @@
                         </tr>
                         <tr>
                             <td>Phone</td>
-                            <td>{{$teacher->email}}</td>
+                            <td>{{$teacher->phone}}</td>
                         </tr>
                     </table>
 
@@ -35,10 +35,10 @@
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>Time</th>
+                                <th>Teaching Time</th>
                                 <th>Course</th>
-                                <th>Class</th>
-                                <th>Room</th>
+                                <th>Class Name</th>
+                                <th>Class Room</th>
                                 <th width="80">Action</th>
                             </tr>
                         </thead>

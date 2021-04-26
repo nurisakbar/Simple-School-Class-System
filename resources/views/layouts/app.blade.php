@@ -93,13 +93,13 @@
                                     </li>        
                             @elseif(Auth::check())
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/class">Class</a>
+                                    <a class="nav-link" href="/class">Manage Class</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/student">Student</a>
+                                    <a class="nav-link" href="/student">Manage Student</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/teacher">Teacher</a>
+                                    <a class="nav-link" href="/teacher">Manage Teacher</a>
                                 </li>
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

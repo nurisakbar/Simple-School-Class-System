@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','List Student')
+@section('title','Manage Class')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,16 +8,17 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    {{-- <a href="{{route('student.create')}}" class="btn btn-danger">Create Class</a>
-                    <hr> --}}
+                    <a href="{{route('class.create')}}" class="btn btn-danger">Create New Class</a>
+                    <hr>
+                    @include('alert')
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
                                 <th>Class Name</th>
                                 <th>Student</th>
                                 <th>Schedule</th>
-                                <td width="80">Action</td>
-                                <th width="80"></th>
+                                <th width="50">Detail</th>
+                                <td width="120">Action</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -26,12 +27,13 @@
                                 <td>{{$class->name}}</td>
                                 <td>{{$class->student->count()}}</td>
                                 <td>{{$class->schedules->count()}}</td>
+                                <td><a href="/class/{{$class->id}}" class="btn btn-primary">Detail</a></td>
                                 <td>
+                                    <a href="/class/{{$class->id}}/edit" class="btn btn-primary" style="float:left;margin-right:10px;">Edit</a>
                                     {!! Form::open(['route'=>['class.destroy',$class->id],'method'=>'delete']) !!}
                                         <button class="btn btn-primary" type="submit">Delete</button>
                                     {!! Form::close() !!}
                                 </td>
-                                <td><a href="/class/{{$class->id}}" class="btn btn-primary">Detail</a></td>
                             </tr>
                             @endforeach
                         </tbody>

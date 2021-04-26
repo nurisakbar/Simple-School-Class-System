@@ -8,7 +8,7 @@ use App\Models\Schedule;
 use App\Http\Requests\MaterialCreate;
 use Auth;
 
-class materialController extends Controller
+class MaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
