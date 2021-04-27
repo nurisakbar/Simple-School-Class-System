@@ -20,4 +20,12 @@ class ScheduleController extends Controller
         $data['students'] = $schedule->class->student;
         return view('schedule.mark-form', $data);
     }
+
+
+    public function destroy($id)
+    {
+        $schedule = Schedule::find($id);
+        $schedule->delete();
+        return redirect('/teacher/'.$schedule->teacher_id)->with('message', 'A Schedule Has Deleted');
+    }
 }

@@ -8,7 +8,7 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    <a href="{{route('student.create')}}" class="btn btn-danger">Create New Student</a>
+                    <a href="{{route('student.create')}}" class="btn btn-primary">Create New Student</a>
                     <hr>
                     @include('alert')
                     <table class="table table-bordered" id="tabel-data">
@@ -18,7 +18,7 @@
                                 <th>Name</th>
                                 <th>Class</th>
                                 <th>Email</th>
-                                <th width="140">Action</th>
+                                <th width="190">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,8 +29,9 @@
                                 <td>{{$student->class->name}}</td>
                                 <td>{{$student->email}}</td>
                                 <td>
-                                    <a href="/class/{{$student->id}}/edit" class="btn btn-primary" style="float:left;margin-right:10px;">Edit</a>
-                                    {!! Form::open(['route'=>['class.destroy',$student->id],'method'=>'delete']) !!}
+                                    <a href="/student/{{$student->id}}/edit" class="btn btn-primary" style="float:left;margin-right:10px;">Edit</a>
+                                    <a href="/student/{{$student->id}}" class="btn btn-primary" style="float:left;margin-right:10px;">Detail</a>
+                                    {!! Form::open(['route'=>['student.destroy',$student->id],'method'=>'delete']) !!}
                                         <button class="btn btn-primary" type="submit">Delete</button>
                                     {!! Form::close() !!}
                                 </td>

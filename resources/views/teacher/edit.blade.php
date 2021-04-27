@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Create Teacher')
+@section('title','Edit Teacher')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +8,7 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    {!! Form::open(['route'=>'teacher.store']) !!}
+                    {!! Form::model($teacher,['route'=>['teacher.update',$teacher->id],'method'=>'PUT']) !!}
                     
                     @include('teacher.form')
 

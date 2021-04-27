@@ -50,7 +50,7 @@
                         <tbody>
                             @foreach($teacher->schedules as $schedule)
                                 <tr>
-                                    <td>{{$schedule->time}}</td>
+                                    <td>{{$schedule->day.', '.$schedule->time}}</td>
                                     <td>{{$schedule->course->name}}</td>
                                     <td>{{$schedule->class->name}}</td>
                                     <td>{{$schedule->room->name}}</td>
@@ -105,11 +105,23 @@
             <tr>
                 <td>Time</td>
                 <td>
-                    <select class="form-control" name="time">
-                        @foreach($teachingTime as $time)
-                            <option value="{{$time}}">{{$time}}</option>
-                        @endforeach
-                    </select>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <select class="form-control" name="time">
+                                @foreach($teachingTime as $time)
+                                    <option value="{{$time}}">{{$time}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control" name="day">
+                                @foreach($days as $day)
+                                    <option value="{{$day}}">{{$day}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    
                 </td>
             </tr>
           </table>

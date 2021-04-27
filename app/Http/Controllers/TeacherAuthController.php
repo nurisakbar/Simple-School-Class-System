@@ -17,7 +17,7 @@ class TeacherAuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::guard('teacher')->attempt($credentials)) {
-            return redirect('teacher-dashboard');
+            return redirect('my-schedule');
         }
         return redirect('teacher-login')->with('message', 'Credentials not matced in our records!');
     }

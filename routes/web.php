@@ -13,14 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/teacher-login', [App\Http\Controllers\TeacherAuthController::class, 'index'])->name('teacher.loginform');
+Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('user.profile');
+Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 Route::post('/teacher-login', [App\Http\Controllers\TeacherAuthController::class, 'login'])->name('teacher.login');
 Route::get('/teacher-login', [App\Http\Controllers\TeacherAuthController::class, 'index'])->name('teacher.loginform');
 Route::get('/teacher-dashboard', [App\Http\Controllers\TeacherController::class, 'dashboard'])->name('teacher.dashboard');
@@ -28,10 +27,11 @@ Route::get('/teacher-dashboard', [App\Http\Controllers\TeacherController::class,
 Route::post('/student-login', [App\Http\Controllers\StudentAuthController::class, 'login'])->name('student.login');
 Route::get('/student-login', [App\Http\Controllers\StudentAuthController::class, 'index'])->name('student.loginform');
 Route::get('/student-dashboard', [App\Http\Controllers\StudentController::class, 'dashboard'])->name('student.dashboard');
-
-
+Route::get('material/{file}/download', [App\Http\Controllers\MaterialController::class,'download']);
+Route::resource('task', App\Http\Controllers\TaskController::class);
 Route::resource('student', App\Http\Controllers\StudentController::class);
 Route::resource('teacher', App\Http\Controllers\TeacherController::class);
+Route::get('teacher/{id}/detail', [App\Http\Controllers\TeacherController::class, 'detail'])->name('teacher.detail');
 Route::get('schedule/{id}/mark', [App\Http\Controllers\ScheduleController::class,'markForm']);
 Route::get('mark', [App\Http\Controllers\MarkController::class,'store']);
 Route::resource('schedule', App\Http\Controllers\ScheduleController::class);

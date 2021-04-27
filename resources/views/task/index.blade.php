@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','List Material')
+@section('title','List Task')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -9,37 +9,34 @@
 
                 <div class="card-body">
                     @if(Auth::guard('teacher')->check())
-                        <a href="{{route('material.create')}}" class="btn btn-primary">Create Material</a>
-                        <hr>
-                    @else
-                        @include('student.profile')
-                        <h4>My Material</h4>
-                        <hr>
+                    <a href="{{route('task.create')}}" class="btn btn-primary">Create New Task</a>
+                    <hr>
                     @endif
+      
                     @include('alert')
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Course</th>
-                                <th>Class</th>
-                                <th>File</th>
+                                <th>Subject</th>
+                                <th>Description</th>
+                                <th>Schedule</th>
+                                <th>End date</th>
                                 @if(Auth::guard('teacher')->check())
-                                    <th width="130"></th>
+                                    <th width="120"></th>
                                 @endif
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($materials as $material)
+                            @foreach($tasks as $task)
                             <tr>
-                                <td>{{$material->title}}</td>
-                                <td>{{$material->schedule->course->name}}</td>
-                                <td>{{$material->schedule->class->name}}</td>
-                                <td><a href="/material/{{$material->file}}/download">{{$material->file}}</a></td>
+                                <td>{{$task->subject}}</td>
+                                <td>{!!$task->description!!}</td>
+                                <td>{{$task->schedule->course->name}}</td>
+                                <td>{{$task->end_date}}</td>
                                 @if(Auth::guard('teacher')->check())
                                     <td>
-                                        <a href="/material/{{$material->id}}/edit" class="btn btn-primary" style="float:left;margin-right:10px;">Edit</a>
-                                        {!! Form::open(['route'=>['material.destroy',$material->id],'method'=>'delete']) !!}
+                                        <a href="/task/{{$task->id}}/edit" class="btn btn-primary" style="float:left;margin-right:10px;">Edit</a>
+                                        {!! Form::open(['route'=>['task.destroy',$task->id],'method'=>'delete']) !!}
                                             <button class="btn btn-primary" type="submit">Delete</button>
                                         {!! Form::close() !!}
                                     </td>

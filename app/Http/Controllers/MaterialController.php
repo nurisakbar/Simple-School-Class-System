@@ -30,7 +30,7 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        $data['schedules'] = Schedule::all();
+        $data['schedules'] = Auth::guard('teacher')->user()->schedules;
         return view('material.create', $data);
     }
 
@@ -48,7 +48,7 @@ class MaterialController extends Controller
         $file->move("material_file", $fileName);
         $input['file'] = $fileName;
         Material::create($input);
-        return redirect('material');
+        return redirect('material')->with('message', 'A Class Materi With Subject '.$request->title.' Has Created');
     }
 
     /**
@@ -73,11 +73,15 @@ class MaterialController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Material $material)
     {
-        //
+        $data['material'] = $material;
+        $data['schedules'] = Schedule::all();
+        return view('material.edit', $data);
     }
 
+
+    
     /**
      * Update the specified resource in storage.
      *
@@ -85,9 +89,21 @@ class MaterialController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Material $material)
     {
-        //
+        $material = $material;
+        $input      = $request->all();
+        if ($request->hasFile('file')) {
+            $file       = $request->file('file');
+            $fileName   = $file->getClientOriginalName();
+            $file->move("material_file", $fileName);
+            $input['file'] = $fileName;
+        } else {
+            $input['file'] = $material->file;
+        }
+
+        $material->update($input);
+        return redirect('material')->with('message', 'A Material With Name '.$material->name.' Has Updated');
     }
 
     /**
@@ -96,9 +112,17 @@ class MaterialController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Material $material)
     {
-        //
+        $material = $material;
+        $material->delete();
+        return redirect('material')->with('message', 'Material With Name '.$material->title.' Has Deleted');
+    }
+
+    public function download($file)
+    {
+        $pathToFile = public_path("material_file/".$file);
+        return response()->download($pathToFile);
     }
 
 

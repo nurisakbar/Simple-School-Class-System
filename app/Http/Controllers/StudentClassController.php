@@ -40,7 +40,7 @@ class StudentClassController extends Controller
     public function store(StudentClassCreate $request)
     {
         StudentClass::create($request->all());
-        return redirect('class');
+        return redirect('class')->with('message', 'A Class With name '.$request->name.' Has Created');
     }
 
     /**

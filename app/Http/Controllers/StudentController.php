@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=>['dashboard']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +49,7 @@ class StudentController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($request->password);
         Student::create($input);
-        return redirect('student');
+        return redirect('student')->with('message', 'A Student has been created successfull!');
     }
 
     /**
@@ -56,7 +60,9 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        $data['student']  = $student;
+
+        return view('student.detail', $data);
     }
 
     /**
@@ -67,7 +73,10 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        //
+        $data['class']    = StudentClass::pluck('name', 'id');
+        $data['student']  = $student;
+
+        return view('student.edit', $data);
     }
 
     /**
@@ -79,7 +88,16 @@ class StudentController extends Controller
      */
     public function update(Request $request, Student $student)
     {
-        //
+        $student = $student;
+        $input = $request->all();
+        if ($request->password != null) {
+            $input['password'] = Hash::make($request->password);
+        } else {
+            $input['password'] = $student->password;
+        }
+
+        $student->update($input);
+        return redirect('student')->with('message', 'A Student With Name '.$student->name.' Has Updated');
     }
 
     /**
@@ -90,7 +108,9 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student = $student;
+        $student->delete();
+        return redirect('student')->with('message', 'Student With Name '.$student->name.' Has Deleted');
     }
 
     public function dashboard()

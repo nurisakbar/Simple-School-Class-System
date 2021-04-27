@@ -20,6 +20,7 @@ class CreateSchedulesTable extends Migration
             $table->integer('room_id');
             $table->integer('student_class_id');
             $table->string('time');
+            $table->string('day', 20);
             $table->timestamps();
         });
     }

@@ -16,6 +16,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/sticky-footer-navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
     @stack('css')
 </head>
 <body>
@@ -39,20 +41,21 @@
                     <ul class="navbar-nav ml-auto">
                             @if(Auth::guard('teacher')->check())
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/my-schedule">My Teaching Schedule</a>
+                                    <a class="nav-link" href="/my-schedule"><i class="fa fa-calendar" aria-hidden="true"></i> My Teaching Schedule</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/material">Material</a>
+                                    <a class="nav-link" href="/material"><i class="fa fa-book" aria-hidden="true"></i> Manage Material</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/task">Task</a>
+                                    <a class="nav-link" href="/task"> <i class="fa fa-tasks" aria-hidden="true"></i> Manage Task</a>
                                 </li>
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            Hello, {{ Auth::guard('teacher')->user()->name }}
+                                            <i class="fa fa-user-circle" aria-hidden="true"></i>{{ Auth::guard('teacher')->user()->name }}
                                         </a>
         
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/profile">Profile</a>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
@@ -66,20 +69,21 @@
                                     </li>
                             @elseif(Auth::guard('student')->check())
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/student-dashboard">My Schedule</a>
+                                    <a class="nav-link" href="/student-dashboard"><i class="fa fa-calendar" aria-hidden="true"></i> My Schedule</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/material">My Material</a>
+                                    <a class="nav-link" href="/material"><i class="fa fa-book" aria-hidden="true"></i> My Material</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/task">My Task</a>
+                                    <a class="nav-link" href="/task"><i class="fa fa-tasks" aria-hidden="true"></i> My Task</a>
                                 </li>
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            Hello, {{ Auth::guard('student')->user()->name }}
+                                            <i class="fa fa-user-circle" aria-hidden="true"></i> {{ Auth::guard('student')->user()->name }}
                                         </a>
         
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/profile">Profile</a>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
@@ -93,31 +97,36 @@
                                     </li>        
                             @elseif(Auth::check())
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/class">Manage Class</a>
+                                    <a class="nav-link" href="/class"><i class="fa fa-building" aria-hidden="true"></i> Manage Class</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/student">Manage Student</a>
+                                    <a class="nav-link" href="/student"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Manage Student</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/teacher">Manage Teacher</a>
+                                    <a class="nav-link" href="/teacher"><i class="fa fa-users" aria-hidden="true"></i> Manage Teacher</a>
                                 </li>
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            {{ Auth::user()->name }}
+                                            <i class="fa fa-user-circle" aria-hidden="true"></i> Hello : {{ Auth::user()->name }}
                                         </a>
         
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="/profile">Profile</a>
                                             <a class="dropdown-item" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                             document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
+                                           
         
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                 @csrf
                                             </form>
                                         </div>
+                                        
+                                        
                                     </li>
+                                    
                             @else
                                 @if (Route::has('login'))
                                 <li class="nav-item">
@@ -148,6 +157,11 @@
             @yield('content')
         </main>
     </div>
+    <footer class="footer">
+        <div class="container text-center">
+          <span class="text-muted ">Simple School Class System | Build With love From Bandung, Indonesia.</span>
+        </div>
+      </footer>
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
     @stack('js')
 </body>

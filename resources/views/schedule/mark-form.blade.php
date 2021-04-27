@@ -5,10 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">List Student In Class {{$schedule->class->name}}</div>
 
                 <div class="card-body">
                     <table class="table table-bordered">
+                        <tr class="table-active">
+                            <th colspan="3">TEACHER INFO</th>
+                        </tr>
                         <tr>
                             <td rowspan="5" width="200"><img src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg" class="img-thumbnail" width="200"></td>
                         </tr>
@@ -26,16 +29,17 @@
                         </tr>
                         <tr>
                             <td>Time</td>
-                            <td>{{$schedule->time}}</td>
+                            <td>{{$schedule->day.', '.$schedule->time}}</td>
                         </tr>
                     </table>
 
-                    <h4>LIST STUDENT IN CLASS</h4>
+                    <h5>LIST STUDENT IN CLASS {{$schedule->class->name}}</h5>
                     <hr>
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>Student ID</th>
+                                <th width="60">Photo</th>
+                                <th width="100">Student ID</th>
                                 <th>Name</th>
                                 <th width="40">First</th>
                                 <th width="40">Mid</th>
@@ -45,8 +49,11 @@
                         <tbody>
                             @foreach($students as $student)
                             <tr>
+                                <td>
+                                    <img src="https://img.icons8.com/bubbles/2x/user-male.png" width="50">
+                                </td>
                                 <td>{{$student->student_id}}</td>
-                            <td>{{$student->name}}</td>
+                                <td>{{$student->name}}</td>
                                 <td>
                                     {!! Form::text('', getMark($student->id,$schedule->id,'first'), ['id'=>'mark-first-'.$student->id,'class'=>'form-control','onKeyup'=>'saveMarkFirst('.$student->id.','.$schedule->id.',1)']) !!}
                                 </td>

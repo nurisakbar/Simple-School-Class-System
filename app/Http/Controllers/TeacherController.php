@@ -21,9 +21,13 @@ class TeacherController extends Controller
 
     public $teachingTime;
 
+    public $day;
+
     public function __construct()
     {
+        $this->middleware('auth', ['except'=>['teacherSchedule']]);
         $this->teachingTime = ['08:00 - 10:00','10:00 - 12:00','13:00 - 15:00'];
+        $this->day = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
     }
     
     public function index()
@@ -53,7 +57,7 @@ class TeacherController extends Controller
         $input = $request->all();
         $input['password'] = Hash::make($request->password);
         Teacher::create($input);
-        return redirect('teacher');
+        return redirect('teacher')->with('A Teacher has been created successfull!');
     }
 
     /**
@@ -65,6 +69,7 @@ class TeacherController extends Controller
     public function show(Teacher $teacher)
     {
         $data['teachingTime']   = $this->teachingTime;
+        $data['days']           = $this->day;
         $data['rooms']          = Room::pluck('name', 'id');
         $data['courses']        = Course::pluck('name', 'id');
         $data['class']          = StudentClass::pluck('name', 'id');
@@ -78,9 +83,10 @@ class TeacherController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit(Teacher $teacher)
     {
-        //
+        $data['teacher'] = $teacher;
+        return view('teacher.edit', $data);
     }
 
     /**
@@ -90,9 +96,19 @@ class TeacherController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, Teacher $teacher)
     {
-        //
+        $teacher = $teacher;
+
+        $input = $request->all();
+        if ($request->password != null) {
+            $input['password'] = Hash::make($request->password);
+        } else {
+            $input['password'] = $teacher->password;
+        }
+
+        $teacher->update($input);
+        return redirect('teacher')->with('message', 'A Teacher With Name '.$teacher->name.' Has Updated');
     }
 
     /**
@@ -101,9 +117,11 @@ class TeacherController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy(Teacher $teacher)
     {
-        //
+        $teacher = $teacher;
+        $teacher->delete();
+        return redirect('teacher')->with('message', 'teacher With Name '.$teacher->name.' Has Deleted');
     }
 
 
@@ -114,11 +132,19 @@ class TeacherController extends Controller
 
     public function teacherSchedule()
     {
+        $data['days']           = $this->day;
         $data['teachingTime']   = $this->teachingTime;
         $data['rooms']          = Room::pluck('name', 'id');
         $data['courses']        = Course::pluck('name', 'id');
         $data['class']          = StudentClass::pluck('name', 'id');
         $data['teacher']        = Teacher::find(Auth::guard('teacher')->user()->id);
         return view('teacher.show', $data);
+    }
+
+    public function detail($id)
+    {
+        $data['teacher'] = Teacher::find($id);
+
+        return view('teacher.detail', $data);
     }
 }
