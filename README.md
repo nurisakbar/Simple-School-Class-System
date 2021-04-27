@@ -31,5 +31,5 @@ Email :  administrator@gmail.com
 password : password
 
 ## Online Demo And Explaination
-Link : http://simpleschool.nurisakbar.com/
-\Video Demo : https://drive.google.com/file/d/1PC4sNNCo8PrN64FzSPP0lyYkWMSeMd-P/view?usp=sharing
+Link : http://simpleschool.nurisakbar.com/ <br>
+Video Demo : https://drive.google.com/file/d/1PC4sNNCo8PrN64FzSPP0lyYkWMSeMd-P/view?usp=sharing
