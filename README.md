@@ -27,7 +27,7 @@ Simple School class is a system to organize the contact information of the teach
 
 ## Admin Login
 You can login as administrator with acount :
-Email :  administrator@gmail.com
+Email :  administrator@gmail.com<br>
 password : password
 
 ## Online Demo And Explaination
