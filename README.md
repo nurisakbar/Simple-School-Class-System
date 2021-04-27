@@ -26,7 +26,7 @@ Simple School class is a system to organize the contact information of the teach
 8. you can access this project with address http://localhost:8000/login
 
 ## Admin Login
-You can login as administrator with acount :
+You can login as administrator with account :<br>
 Email :  administrator@gmail.com<br>
 password : password
 
