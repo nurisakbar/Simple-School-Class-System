@@ -12,9 +12,15 @@ use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
+    public $religion;
+    public $education;
+    public $workKind;
     public function __construct()
     {
         $this->middleware('auth', ['except'=>['dashboard']]);
+        $this->religion = ['Islam','Kristen','Budha'];
+        $this->education = ['SD','SMP','SMA'];
+        $this->workKind = ['Karyawan Swasta','Lain nya'];
     }
     /**
      * Display a listing of the resource.
@@ -34,6 +40,9 @@ class StudentController extends Controller
      */
     public function create()
     {
+        $data['religions']      = $this->religion;
+        $data['educations']     = $this->religion;
+        $data['workKinds']      = $this->workKind;
         $data['class']          = StudentClass::pluck('name', 'id');
         return view('student.create', $data);
     }
@@ -73,6 +82,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
+        $data['religions']      = $this->religion;
         $data['class']    = StudentClass::pluck('name', 'id');
         $data['student']  = $student;
 
