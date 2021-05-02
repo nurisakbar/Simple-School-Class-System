@@ -38,3 +38,7 @@ Route::resource('schedule', App\Http\Controllers\ScheduleController::class);
 Route::resource('class', App\Http\Controllers\StudentClassController::class);
 Route::resource('material', App\Http\Controllers\MaterialController::class);
 Route::get('my-schedule', [App\Http\Controllers\TeacherController::class,'teacherSchedule']);
+Route::resource('academic', App\Http\Controllers\AcademicController::class);
+Route::resource('payment', App\Http\Controllers\PaymentController::class);
+Route::resource('course', App\Http\Controllers\CourseController::class);
+Route::resource('room', App\Http\Controllers\RoomController::class);

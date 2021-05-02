@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Course;
-use App\Http\Requests\CourseRequest;
+use App\Models\AcademicYear;
+use App\Http\Requests\AcademicRequest;
 
-class CourseController extends Controller
+class AcademicController extends Controller
 {
      /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class CourseController extends Controller
     
     public function index()
     {
-        $data['courses'] = Course::all();
-        return view('course.index', $data);
+        $data['academic'] = AcademicYear::all();
+        return view('academic.index', $data);
     }
 
     /**
@@ -28,7 +28,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('course.create');
+        return view('academic.create');
     }
 
     /**
@@ -37,10 +37,10 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CourseRequest $request)
+    public function store(AcademicRequest $request)
     {
-        Course::create($request->all());
-        return redirect('course')->with('A course has been created successfull!');
+        AcademicYear::create($request->all());
+        return redirect('academic')->with('message', 'A academic has been created successfull!');
     }
 
     /**
@@ -60,10 +60,10 @@ class CourseController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(AcademicYear $academic)
     {
-        $data['course'] = $course;
-        return view('course.edit', $data);
+        $data['academic'] = $academic;
+        return view('academic.edit', $data);
     }
 
     /**
@@ -73,11 +73,11 @@ class CourseController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(CourseRequest $request, Course $course)
+    public function update(AcademicRequest $request, AcademicYear $academic)
     {
-        $course = $course;
-        $course->update($request->all());
-        return redirect('course')->with('message', 'A course With Name '.$course->name.' Has Updated');
+        $academic = $academic;
+        $academic->update($request->all());
+        return redirect('academic')->with('message', 'A academic With Name '.$academic->year.' Has Updated');
     }
 
     /**
@@ -86,10 +86,10 @@ class CourseController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(AcademicYear $academic)
     {
-        $course = $course;
-        $course->delete();
-        return redirect('course')->with('message', 'course With Name '.$course->name.' Has Deleted');
+        $academic = $academic;
+        $academic->delete();
+        return redirect('academic')->with('message', 'academic With Name '.$academic->year.' Has Deleted');
     }
 }
