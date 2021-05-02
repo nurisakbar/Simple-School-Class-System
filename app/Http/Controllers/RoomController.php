@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Course;
-use App\Http\Requests\CourseRequest;
+use App\Models\Room;
+use App\Http\Requests\RoomRequest;
 
-class CourseController extends Controller
+class RoomController extends Controller
 {
      /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class CourseController extends Controller
     
     public function index()
     {
-        $data['courses'] = Course::all();
-        return view('course.index', $data);
+        $data['rooms'] = Room::all();
+        return view('room.index', $data);
     }
 
     /**
@@ -28,7 +28,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('course.create');
+        return view('room.create');
     }
 
     /**
@@ -37,10 +37,10 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CourseRequest $request)
+    public function store(RoomRequest $request)
     {
-        Course::create($request->all());
-        return redirect('course')->with('A course has been created successfull!');
+        Room::create($request->all());
+        return redirect('room')->with('A room has been created successfull!');
     }
 
     /**
@@ -60,10 +60,10 @@ class CourseController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(Room $room)
     {
-        $data['course'] = $course;
-        return view('course.edit', $data);
+        $data['room'] = $room;
+        return view('room.edit', $data);
     }
 
     /**
@@ -73,11 +73,11 @@ class CourseController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(CourseRequest $request, Course $course)
+    public function update(RoomRequest $request, Room $room)
     {
-        $course = $course;
-        $course->update($request->all());
-        return redirect('course')->with('message', 'A course With Name '.$course->name.' Has Updated');
+        $room = $room;
+        $room->update($request->all());
+        return redirect('room')->with('message', 'A room With Name '.$room->name.' Has Updated');
     }
 
     /**
@@ -86,10 +86,10 @@ class CourseController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(Room $room)
     {
-        $course = $course;
-        $course->delete();
-        return redirect('course')->with('message', 'course With Name '.$course->name.' Has Deleted');
+        $room = $room;
+        $room->delete();
+        return redirect('room')->with('message', 'room With Name '.$room->name.' Has Deleted');
     }
 }

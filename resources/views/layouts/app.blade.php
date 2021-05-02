@@ -105,27 +105,43 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/teacher"><i class="fa fa-users" aria-hidden="true"></i> Manage Teacher</a>
                                 </li>
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                            <i class="fa fa-user-circle" aria-hidden="true"></i> Hello : {{ Auth::user()->name }}
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <i class="fa fa-building" aria-hidden="true"></i> Master Data
+                                    </a>
+    
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/course">Manage Course</a>
+                                        <a class="dropdown-item" href="/room">Manage Room</a>
+                                    </div>
+            
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/academic"><i class="fa fa-users" aria-hidden="true"></i> Manage Academic</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/payment"><i class="fa fa-money" aria-hidden="true"></i> Manage Payment</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        <i class="fa fa-user-circle" aria-hidden="true"></i> Hello : {{ Auth::user()->name }}
+                                    </a>
+    
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="/profile">Profile</a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
                                         </a>
-        
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="/profile">Profile</a>
-                                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                            document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-                                           
-        
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
-                                        </div>
                                         
-                                        
-                                    </li>
+    
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
+            
+                                </li>
                                     
                             @else
                                 @if (Route::has('login'))

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Course;
-use App\Http\Requests\CourseRequest;
+use App\Models\Payment;
+use App\Models\Student;
+use App\Http\Requests\PaymentRequest;
 
-class CourseController extends Controller
+class PaymentController extends Controller
 {
      /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class CourseController extends Controller
     
     public function index()
     {
-        $data['courses'] = Course::all();
-        return view('course.index', $data);
+        $data['payment'] = Payment::all();
+        return view('payment.index', $data);
     }
 
     /**
@@ -28,7 +29,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('course.create');
+        $data['student'] = Student::pluck('name' , 'id');
+        return view('payment.create', $data);
     }
 
     /**
@@ -37,10 +39,10 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CourseRequest $request)
+    public function store(PaymentRequest $request)
     {
-        Course::create($request->all());
-        return redirect('course')->with('A course has been created successfull!');
+        Payment::create($request->all());
+        return redirect('payment')->with('A payment has been created successfull!');
     }
 
     /**
@@ -60,10 +62,11 @@ class CourseController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(Payment $payment)
     {
-        $data['course'] = $course;
-        return view('course.edit', $data);
+        $data['payment'] = Payment::all();
+        $data['payment'] = $payment;
+        return view('payment.edit', $data);
     }
 
     /**
@@ -73,11 +76,11 @@ class CourseController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(CourseRequest $request, Course $course)
+    public function update(PaymentRequest $request, Payment $payment)
     {
-        $course = $course;
-        $course->update($request->all());
-        return redirect('course')->with('message', 'A course With Name '.$course->name.' Has Updated');
+        $payment = $payment;
+        $payment->update($request->all());
+        return redirect('payment')->with('message', 'A payment Has Updated');
     }
 
     /**
@@ -86,10 +89,11 @@ class CourseController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(Payment $payment)
     {
-        $course = $course;
-        $course->delete();
-        return redirect('course')->with('message', 'course With Name '.$course->name.' Has Deleted');
+        $payment = $payment;
+        $payment->delete();
+        return redirect('payment')->with('message', 'payment Has Deleted');
     }
+
 }
