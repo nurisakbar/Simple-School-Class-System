@@ -10,8 +10,8 @@
                 <div class="card-body">
                     {!! Form::open(['route'=>'class.store','files'=>true]) !!}  
                     @include('student-class.form')
-                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
-                    <a href="{{route('class.index')}}" class="btn btn-primary btn-sm">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="{{route('class.index')}}" class="btn btn-primary">Cancel</a>
 
                     {!! Form::close() !!}
                 </div>

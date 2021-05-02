@@ -10,6 +10,7 @@ use App\Models\StudentClass;
 use App\Http\Requests\TeacherCreate;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\AcademicYear;
 
 class TeacherController extends Controller
 {
@@ -74,6 +75,7 @@ class TeacherController extends Controller
         $data['courses']        = Course::pluck('name', 'id');
         $data['class']          = StudentClass::pluck('name', 'id');
         $data['teacher']        = $teacher;
+        $data['academicYear']  =AcademicYear::where('active', 'y')->first();
         return view('teacher.show', $data);
     }
 

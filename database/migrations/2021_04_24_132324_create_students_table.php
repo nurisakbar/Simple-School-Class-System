@@ -18,16 +18,17 @@ class CreateStudentsTable extends Migration
             $table->string('student_id', 10); // nik
             $table->string('student_id_second', 10)->nullable();
             $table->string('name');
+            $table->string('nik');
             $table->enum('gender', ['m','f']);
             $table->string('born_place');
             $table->string('born_date');
             $table->string('address');
-            $table->string('address_2')->nullable(); // rt
-            $table->string('address_3')->nullable(); //rw
-            $table->string('address_4')->nullable(); // kelurahan
-            $table->string('address_5')->nullable(); // kecamatan
-            $table->string('postcode', 7);
-            $table->string('phone', 13);
+            // $table->string('address_2')->nullable(); // rt
+            // $table->string('address_3')->nullable(); //rw
+            // $table->string('address_4')->nullable(); // kelurahan
+            // $table->string('address_5')->nullable(); // kecamatan
+            // $table->string('postcode', 7);
+            // $table->string('phone', 13);
             $table->string('religion');
             $table->string('father_name');
             $table->string('mother_name');

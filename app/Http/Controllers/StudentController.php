@@ -83,6 +83,8 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         $data['religions']      = $this->religion;
+        $data['educations']     = $this->religion;
+        $data['workKinds']      = $this->workKind;
         $data['class']    = StudentClass::pluck('name', 'id');
         $data['student']  = $student;
 

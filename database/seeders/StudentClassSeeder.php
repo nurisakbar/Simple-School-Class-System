@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\StudentClass;
+use App\Models\Teacher;
 
 class StudentClassSeeder extends Seeder
 {
@@ -14,16 +15,17 @@ class StudentClassSeeder extends Seeder
      */
     public function run()
     {
+        $teacher = Teacher::all()->random(1)->first();
         $rooms = [
-            ['name'=>'Class 1A'],
-            ['name'=>'Class 1B'],
-            ['name'=>'Class 1C'],
-            ['name'=>'Class 2A'],
-            ['name'=>'Class 2B'],
-            ['name'=>'Class 2C'],
-            ['name'=>'Class 3A'],
-            ['name'=>'Class 3B'],
-            ['name'=>'Class 3C']
+            ['name'=>'Class 1A','teacher_id'=>$teacher->id],
+            ['name'=>'Class 1B','teacher_id'=>$teacher->id],
+            ['name'=>'Class 1C','teacher_id'=>$teacher->id],
+            ['name'=>'Class 2A','teacher_id'=>$teacher->id],
+            ['name'=>'Class 2B','teacher_id'=>$teacher->id],
+            ['name'=>'Class 2C','teacher_id'=>$teacher->id],
+            ['name'=>'Class 3A','teacher_id'=>$teacher->id],
+            ['name'=>'Class 3B','teacher_id'=>$teacher->id],
+            ['name'=>'Class 3C','teacher_id'=>$teacher->id]
         ];
 
         StudentClass::insert($rooms);

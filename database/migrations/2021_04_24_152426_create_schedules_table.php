@@ -21,6 +21,7 @@ class CreateSchedulesTable extends Migration
             $table->integer('student_class_id');
             $table->string('time');
             $table->string('day', 20);
+            $table->integer('academic_year_id');
             $table->timestamps();
         });
     }

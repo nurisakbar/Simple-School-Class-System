@@ -17,6 +17,8 @@ class CreateMarksTable extends Migration
             $table->id();
             $table->integer('schedule_id');
             $table->integer('student_id');
+            $table->string('competence_spiritual_attitude');
+            $table->string('competence_social_attitude');
             $table->integer('first')->default(0);
             $table->integer('mid')->default(0);
             $table->integer('final')->default(0);

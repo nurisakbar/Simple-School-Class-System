@@ -77,14 +77,34 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>NIK</label>
-                    {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Student Name']) !!}
-                    @if($errors->has('name'))
-                        <small id="emailHelp" class="form-text text-muted">{{ $errors->first('name') }}</small>
+                    {!! Form::text('nik', null, ['class'=>'form-control','placeholder'=>'NIK']) !!}
+                    @if($errors->has('nik'))
+                        <small id="emailHelp" class="form-text text-muted">{{ $errors->first('nik') }}</small>
                     @endif
                 </div>
             </div>
         </div>
         <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Jenis Kelamin</label>
+                    {!! Form::select('gender',['m'=>'Laki Laki','f'=>'Perempuan'], null, ['class'=>'form-control']) !!}
+                    @if($errors->has('address'))
+                        <small id="emailHelp" class="form-text text-muted">{{ $errors->first('address') }}</small>
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>Address</label>
+                    {!! Form::text('address', null, ['class'=>'form-control','placeholder'=>'Student Address']) !!}
+                    @if($errors->has('address'))
+                        <small id="emailHelp" class="form-text text-muted">{{ $errors->first('address') }}</small>
+                    @endif
+                </div>
+            </div>
+        </div>
+        {{-- <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Nama Siswa</label>
@@ -103,7 +123,7 @@
                     @endif
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 
@@ -165,7 +185,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Nama Ayah</label>
-                    {!! Form::text('father_name', null, ['class'=>'form-control','placeholder'=>'Nama Ayah']) !!}
+                    {!! Form::text('mother_name', null, ['class'=>'form-control','placeholder'=>'Nama Ayah']) !!}
                     @if($errors->has('father_name'))
                         <small id="emailHelp" class="form-text text-muted">{{ $errors->first('father_name') }}</small>
                     @endif
@@ -174,7 +194,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Tanggal Lahir</label>
-                    {!! Form::date('father_born_date', null, ['class'=>'form-control','placeholder'=>'Tanggal Lahir']) !!}
+                    {!! Form::date('mother_born_date', null, ['class'=>'form-control','placeholder'=>'Tanggal Lahir']) !!}
                     @if($errors->has('born_date'))
                         <small id="emailHelp" class="form-text text-muted">{{ $errors->first('born_date') }}</small>
                     @endif
@@ -183,7 +203,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Pendidikan</label>
-                    <select name="father_latest_education" class="form-control">
+                    <select name="mother_latest_education" class="form-control">
                         @foreach($educations as $education)
                         <option value="{{$education}}">{{$education}}</option>
                         @endforeach
@@ -196,7 +216,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Pekerjan</label>
-                    <select name="father_work" class="form-control">
+                    <select name="mother_work" class="form-control">
                         @foreach($workKinds as $workKind)
                         <option value="{{$workKind}}">{{$workKind}}</option>
                         @endforeach
@@ -237,13 +257,6 @@
             @endif
         </div>
     </div>
-</div>
-<div class="form-group">
-    <label>Address</label>
-    {!! Form::text('address', null, ['class'=>'form-control','placeholder'=>'Student Address']) !!}
-    @if($errors->has('address'))
-        <small id="emailHelp" class="form-text text-muted">{{ $errors->first('address') }}</small>
-    @endif
 </div>
 <div class="form-group">
     <button type="submit" class="btn btn-primary">Submit</button>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\StudentClass;
 use App\Http\Requests\StudentClassCreate;
+use App\Models\Teacher;
 
 class StudentClassController extends Controller
 {
@@ -28,7 +29,8 @@ class StudentClassController extends Controller
      */
     public function create()
     {
-        return view('student-class.create');
+        $data['teachers'] = Teacher::pluck('name', 'id');
+        return view('student-class.create', $data);
     }
 
     /**

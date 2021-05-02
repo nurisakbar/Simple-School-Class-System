@@ -14,9 +14,10 @@
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>Class Name</th>
-                                <th>Student</th>
-                                <th>Schedule</th>
+                                <th>Nama Kelas</th>
+                                <th>Nama Walikelas</th>
+                                <th>Jumlah Siswa</th>
+                                <th>Jadwal</th>
                                 <th width="40">Detail</th>
                                 <td width="120">Action</td>
                             </tr>
@@ -25,6 +26,7 @@
                             @foreach($classes as $class)
                             <tr>
                                 <td>{{$class->name}}</td>
+                                <td>{{$class->teacher->name}}</td>
                                 <td>{{$class->student->count()}}</td>
                                 <td>{{$class->schedules->count()}}</td>
                                 <td><a href="/class/{{$class->id}}" class="btn btn-primary">Detail</a></td>

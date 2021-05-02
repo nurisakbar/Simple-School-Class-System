@@ -10,8 +10,8 @@
                 <div class="card-body">
                     {!! Form::model($class,['route'=>['class.update','class'=>$class->id],'method'=>'put']) !!}  
                     @include('student-class.form')
-                    <button type="submit" class="btn btn-primary btn-sm">Update</button>
-                    <a href="{{route('class.index')}}" class="btn btn-primary btn-sm">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="{{route('class.index')}}" class="btn btn-primary">Cancel</a>
 
                     {!! Form::close() !!}
                 </div>

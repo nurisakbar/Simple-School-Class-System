@@ -9,7 +9,7 @@ class StudentClass extends Model
 {
     use HasFactory;
 
-    protected $fillable=['name'];
+    protected $fillable=['name','teacher_id'];
 
     public function schedules()
     {
@@ -19,5 +19,10 @@ class StudentClass extends Model
     public function student()
     {
         return $this->hasMany(\App\Models\Student::class);
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(\App\Models\Teacher::class);
     }
 }

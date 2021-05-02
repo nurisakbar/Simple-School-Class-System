@@ -88,6 +88,7 @@
         </div>
         {!! Form::open(['route'=>'schedule.store']) !!}
         {!! Form::hidden('teacher_id', $teacher->id) !!}
+        {!! Form::hidden('academic_year_id', $academicYear->id) !!}
         <div class="modal-body">
           <table class="table table-bordered">
               <tr>
