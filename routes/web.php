@@ -45,3 +45,8 @@ Route::resource('room', App\Http\Controllers\RoomController::class);
 Route::get('attedance/create', [App\Http\Controllers\AttedanceController::class, 'create']);
 Route::get('attedance/store', [App\Http\Controllers\AttedanceController::class, 'store']);
 Route::get('attedance/{scheduleId}', [App\Http\Controllers\AttedanceController::class, 'index']);
+
+
+
+Route::get('pmb', [App\Http\Controllers\PmbController::class, 'index']);
+Route::get('pmb/register', [App\Http\Controllers\PmbController::class, 'register']);
