@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pmb;
 
 class PmbController extends Controller
 {
@@ -14,5 +15,15 @@ class PmbController extends Controller
     public function register()
     {
         return view('pmb.register');
+    }
+
+    public function registerAct(Request $request)
+    {
+        $pmb = Pmb::create($request->all());
+    }
+
+    public function login()
+    {
+        return view('pmb.login');
     }
 }
