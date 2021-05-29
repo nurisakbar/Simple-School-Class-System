@@ -40,9 +40,15 @@
           <li class="nav-item">
             <a class="nav-link" href="/pmb/register">Formulir Pendaftaran</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/pmb/login">Login</a>
-          </li>
+          @if(session('pmb_name')=='')
+            <li class="nav-item">
+              <a class="nav-link" href="/pmb/login">Login</a>
+            </li>
+          @else
+            <li class="nav-item">
+              <a class="nav-link" href="/pmb/login">{{session('pmb_name')}}</a>
+            </li>
+          @endif
           <li class="nav-item">
             <a class="nav-link" href="/pmb/pengumuman">Hasil Seleksi</a>
           </li>
