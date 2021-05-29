@@ -26,4 +26,16 @@ class PmbController extends Controller
     {
         return view('pmb.login');
     }
+
+    public function loginAct(Request $request)
+    {
+        $pmb = Pmb::where('nik',$request->nik)->where('birth_date',$request->birth_date)->first();
+        return $pmb;
+        if($pmb)
+        {
+            return redirect('profile');
+        }else{
+            return redirect('pmb/login')->with('message','Akun Yang Anda Masukan Tidak Sesuai');
+        }
+    }
 }

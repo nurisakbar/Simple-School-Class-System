@@ -50,5 +50,6 @@ Route::get('attedance/{scheduleId}', [App\Http\Controllers\AttedanceController::
 
 Route::get('pmb', [App\Http\Controllers\PmbController::class, 'index']);
 Route::get('pmb/login', [App\Http\Controllers\PmbController::class, 'login']);
+Route::post('pmb/login', [App\Http\Controllers\PmbController::class, 'loginAct']);
 Route::get('pmb/register', [App\Http\Controllers\PmbController::class, 'register']);
 Route::post('pmb/register', [App\Http\Controllers\PmbController::class, 'registerAct']);
