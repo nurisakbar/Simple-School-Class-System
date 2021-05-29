@@ -113,11 +113,12 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="/course">Manage Course</a>
                                         <a class="dropdown-item" href="/room">Manage Room</a>
+                                        <a class="dropdown-item" href="/room">Manage Academic Year</a>
                                     </div>
             
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/academic"><i class="fa fa-users" aria-hidden="true"></i> Manage Academic</a>
+                                    <a class="nav-link" href="/manage-pmb"><i class="fa fa-users" aria-hidden="true"></i> PMB</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/payment"><i class="fa fa-money" aria-hidden="true"></i> Manage Payment</a>

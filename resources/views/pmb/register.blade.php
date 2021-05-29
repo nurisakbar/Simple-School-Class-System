@@ -4,70 +4,67 @@
     <main role="main">
         <h2>FORMULIR PENERIMAAN PESERTA DIDIK BARU TAHUN 2021</h2>
         <hr>
-        {!! Form::open(['url'=>'pmb/register']) !!}
+        @if(isset($pmb))
+            {!! Form::model($pmb,['url'=>'pmb/register']) !!}
+            
+            @if($pmb->proof_of_payment==null and $pmb->payment_status==null)
+                <div class="alert alert-success" role="alert">
+                        Silahkan Upload Bukti Pembayaran Anda <a href="#exampleModal" data-toggle="modal" data-target="#exampleModal">Disini.</a>
+                </div>
+            @elseif($pmb->payment_status!=null)
+              <div class="alert alert-success" role="alert">
+                Pembayaran anda sudah terkonfirmasi, downloat kartu ujian disini.
+            </div>
+            @else
+            <div class="alert alert-success" role="alert">
+                Bukti Pembayaran anda sedang diproses oleh admin, silahkan menunggu info selanjutnya.
+            </div>
+            @endif
+        @else
+            {!! Form::open(['url'=>'pmb/register']) !!}
+        @endif
+
+
         <div class="row">
             <div class="col-md-12">
-                <table class="table table-bordered">
-                    <tr>
-                        <td>Nama</td>
-                        <td>{!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Nama Lengkap']) !!}</td>
-                    </tr>
-                    <tr>
-                        <td>Jenis Kelamin</td>
-                        <td>{!! Form::select('gender', ['M'=>'Laki Laki','F'=>'Perempuan'], null, ['class'=>'form-control']) !!}</td>
-                    </tr>
-                    <tr>
-                        <td>NIK & No KK</td>
-                        <td>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    {!! Form::text('nik', null, ['class'=>'form-control','placeholder'=>'NIK']) !!}
-                                </div>
-                                <div class="col-md-6">
-                                    {!! Form::text('kk', null, ['class'=>'form-control','placeholder'=>'Nomor KK']) !!}
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tempat, Tanggal Lahir</td>
-                        <td>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    {!! Form::text('birth_place', null, ['class'=>'form-control','placeholder'=>'Nama Lengkap']) !!}
-                                </div>
-                                <div class="col-md-6">
-                                    {!! Form::date('birth_date', null, ['class'=>'form-control','placeholder'=>'Tempat Lahir']) !!}
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Agama</td>
-                        <td>
-                            {!! Form::select('religion', ['I'=>'Islam','K'=>'Kristen'], null, ['class'=>'form-control']) !!}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Alamat Lengkap</td>
-                        <td>
-                            {!! Form::textarea('address', null, ['rows'=>2,'class'=>'form-control','placeholder'=>'Alamat Lengkap']) !!}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>No HP</td>
-                        <td>{!! Form::text('phone', null, ['class'=>'form-control','placeholder'=>'Nomor HP']) !!}</td>                    
-                    <tr>
-                        <td></td>
-                        <td>
-                            <button type="submit" class="btn btn-info">Daftar</button>
-                        </td>
-                    </tr>
-
-                </table>
+                @include('alert')
+                @include('pmb.form')
             </div>
         </div>
         {!! Form::close() !!}
     </main>
 </div>
+
+
+
+  <!-- Modal -->
+  {!! Form::open(['url'=>'pmb/register','files'=>true]) !!}
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Upload Bukti Pembayaran</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" name="type" value="bukti_pembayaran">
+            <table class="table table-bordered">
+                <tr>
+                    <td>Upload Bukti Pembayaran PMB</td>
+                </tr>
+                <tr>
+                    <td><input type="file" name="image"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          <button type="submit" class="btn btn-primary">Upload</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {!! Form::close() !!}
 @endsection

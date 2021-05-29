@@ -24,7 +24,7 @@ class CreatePmbsTable extends Migration
             $table->enum('gender', ['m','f']);
             $table->date('birth_date');
             $table->string('birth_place');
-            $table->text('payment_status')->nullable();
+            $table->boolean('payment_status')->nullable();
             $table->text('proof_of_payment')->nullable();
             $table->enum('pass_status', ['y','n'])->nullable();
             $table->timestamps();
