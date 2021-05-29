@@ -140,6 +140,7 @@ class TeacherController extends Controller
         $data['courses']        = Course::pluck('name', 'id');
         $data['class']          = StudentClass::pluck('name', 'id');
         $data['teacher']        = Teacher::find(Auth::guard('teacher')->user()->id);
+        $data['academicYear']  =AcademicYear::where('active', 'y')->first();
         return view('teacher.show', $data);
     }
 

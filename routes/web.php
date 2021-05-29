@@ -42,3 +42,6 @@ Route::resource('academic', App\Http\Controllers\AcademicController::class);
 Route::resource('payment', App\Http\Controllers\PaymentController::class);
 Route::resource('course', App\Http\Controllers\CourseController::class);
 Route::resource('room', App\Http\Controllers\RoomController::class);
+Route::get('attedance/create', [App\Http\Controllers\AttedanceController::class, 'create']);
+Route::get('attedance/store', [App\Http\Controllers\AttedanceController::class, 'store']);
+Route::get('attedance/{scheduleId}', [App\Http\Controllers\AttedanceController::class, 'index']);

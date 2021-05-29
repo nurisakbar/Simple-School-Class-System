@@ -39,7 +39,7 @@
                                 <th>Course</th>
                                 <th>Class Name</th>
                                 <th>Class Room</th>
-                                <th width="80">Action</th>
+                                <th width="190">Action</th>
                             </tr>
                         </thead>
                         @if(count($teacher->schedules)<1)
@@ -62,7 +62,8 @@
                                         </td>
                                     @else
                                         <td>
-                                            <a href="/schedule/{{$schedule->id}}/mark" class="btn btn-success btn-sm">Add Mark</a>
+                                            <a href="/schedule/{{$schedule->id}}/mark" class="btn btn-success btn-sm">Kelola Nilai</a>
+                                            <a href="/attedance/{{$schedule->id}}" class="btn btn-success btn-sm">Kelola Kehadiran</a>
                                         </td>
                                     @endif
                                 </tr>
