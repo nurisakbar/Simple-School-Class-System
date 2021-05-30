@@ -28,6 +28,11 @@ class PmbController extends Controller
         return view('page/'.$page);
     }
 
+    public function hasil()
+    {
+        return view('pmb.hasil');
+    }
+
     public function registerAct(Request $request)
     {
         if ($request->has('type')) {

@@ -30,10 +30,6 @@
                                 <td>{{$pmb->payment_status??'Belum Bayar'}}</td>
                                 <td>
                                     <a href="/pmb/{{$pmb->id}}" class="btn btn-primary" style="float:left;margin-right:10px;">Detail</a>
-                                    {{-- <a href="/student/{{$student->id}}" class="btn btn-primary" style="float:left;margin-right:10px;">Detail</a>
-                                    {!! Form::open(['route'=>['student.destroy',$student->id],'method'=>'delete']) !!}
-                                        <button class="btn btn-primary" type="submit">Delete</button>
-                                    {!! Form::close() !!} --}}
                                 </td>
                             </tr>
                             @endforeach

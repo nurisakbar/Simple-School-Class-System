@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Detail Pembayaran')
+@section('title','Detail Calon Siswa')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -17,17 +17,29 @@
                         <div class="col-md-4">
                             <table class="table table-bordered">
                                 <tr>
-                                    <th>Bukti Pembayaran</th>
+                                    <th colspan="2">Bukti Pembayaran</th>
                                 </tr>
                                 <tr>
-                                    <td><img width="300" src="{{ asset('pmb/'.$pmb->proof_of_payment)}}"></td>
+                                    <td colspan="2"><img width="300" src="{{ asset('pmb/'.$pmb->proof_of_payment)}}"></td>
                                 </tr>
                                 <tr>
+                                    <td width="160">Status Pembayaran</td>
                                     <td>{!! Form::select('payment_status', ['1'=>'Diterima',0=>'Ditolak'], $pmb->payment_status, ['class'=>'form-control']) !!}</td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <button type="submit" class="btn btn-danger" style="width:100%">Simpan</button>
+                                    <td width="160">Status Kelulusan</td>
+                                    <td>{!! Form::select('pass_status', [null=>'Belum',1=>'Lulus',0=>'Tidak Lulus'], $pmb->pass_status, ['class'=>'form-control']) !!}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-danger" style="width:100%">Simpan</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a href="/manage-pmb" class="btn btn-danger"  style="width:100%">Kembali</a>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             </table>
