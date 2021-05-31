@@ -9,3 +9,14 @@ function getMark($studentId, $scheduleId, $field)
         return $mark->$field;
     }
 }
+
+
+function getAttendance($studentId, $scheduleId, $meetTo)
+{
+    $attedance = \DB::table('attedances')
+                ->where('student_id', $studentId)
+                ->where('schedule_id', $scheduleId)
+                ->where('meet_to', $meetTo)
+                ->first();
+    return $attedance->status??'-';
+}

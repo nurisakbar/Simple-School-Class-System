@@ -41,7 +41,7 @@ class StudentController extends Controller
     public function create()
     {
         $data['religions']      = $this->religion;
-        $data['educations']     = $this->religion;
+        $data['educations']     = $this->education;
         $data['workKinds']      = $this->workKind;
         $data['class']          = StudentClass::pluck('name', 'id');
         return view('student.create', $data);
