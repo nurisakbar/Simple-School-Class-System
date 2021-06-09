@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
-Auth::routes();
-
+//Auth::routes();
+Route::get('login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::post('login', [App\Http\Controllers\AuthController::class, 'loginAct']);
+Route::post('logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('user.profile');
 Route::put('/profile', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
@@ -34,10 +36,14 @@ Route::resource('teacher', App\Http\Controllers\TeacherController::class);
 Route::get('teacher/{id}/detail', [App\Http\Controllers\TeacherController::class, 'detail'])->name('teacher.detail');
 Route::get('schedule/{id}/mark', [App\Http\Controllers\ScheduleController::class,'markForm']);
 Route::get('mark', [App\Http\Controllers\MarkController::class,'store']);
+Route::get('schedule/{id}/score', [App\Http\Controllers\TestScoreController::class,'index']);
+Route::get('score/create', [App\Http\Controllers\TestScoreController::class,'create']);
+Route::post('score', [App\Http\Controllers\TestScoreController::class,'store']);
 Route::resource('schedule', App\Http\Controllers\ScheduleController::class);
 Route::resource('class', App\Http\Controllers\StudentClassController::class);
 Route::resource('material', App\Http\Controllers\MaterialController::class);
 Route::get('my-schedule', [App\Http\Controllers\TeacherController::class,'teacherSchedule']);
+Route::get('home-room-teacher', [App\Http\Controllers\TeacherController::class,'homeRoomTeacher']);
 Route::resource('academic', App\Http\Controllers\AcademicController::class);
 Route::resource('payment', App\Http\Controllers\PaymentController::class);
 Route::resource('course', App\Http\Controllers\CourseController::class);
@@ -45,7 +51,9 @@ Route::resource('room', App\Http\Controllers\RoomController::class);
 Route::get('attedance/create', [App\Http\Controllers\AttedanceController::class, 'create']);
 Route::get('attedance/store', [App\Http\Controllers\AttedanceController::class, 'store']);
 Route::get('attedance/{scheduleId}', [App\Http\Controllers\AttedanceController::class, 'index']);
+//Route::get('report', [App\Http\Controllers\ReportController::class, 'reportPdf']);
 Route::get('report', [App\Http\Controllers\ReportController::class, 'report']);
+Route::post('report', [App\Http\Controllers\ReportController::class, 'reportAct']);
 
 
 Route::get('pmb', [App\Http\Controllers\PmbController::class, 'index']);

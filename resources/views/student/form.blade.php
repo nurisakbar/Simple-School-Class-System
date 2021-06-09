@@ -184,7 +184,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Nama Ayah</label>
+                    <label>Nama Ibu</label>
                     {!! Form::text('mother_name', null, ['class'=>'form-control','placeholder'=>'Nama Ayah']) !!}
                     @if($errors->has('father_name'))
                         <small id="emailHelp" class="form-text text-muted">{{ $errors->first('father_name') }}</small>

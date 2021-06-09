@@ -2,6 +2,7 @@
 <style>
     table, td, th {
       border: 1px solid black;
+      padding:3px;
     }
     
     table {
@@ -14,7 +15,7 @@
     <tr>
         <td>Nama Peserta didik</td>
         <td>:</td>
-        <td>SAJID INDIEK</td>
+        <td>{{$student->name}}</td>
         <td>Kelas</td>
         <td>:</td>
         <td>II (Dua)</td>
@@ -22,7 +23,7 @@
     <tr>
         <td>NIS</td>
         <td>:</td>
-        <td>192001051</td>
+        <td>{{$student->student_id}}</td>
         <td>Semester</td>
         <td>:</td>
         <td>Ganjil</td>
@@ -54,15 +55,14 @@
     <tr>
         <td>1</td>
         <td>Sikap Spiritual</td>
-        <td>SAJIED menunjukkan sikap ketaatan beribadah berperilaku syukur berdoa sebelum
-            dan sesudah melakukan kegiatan toleransi dalam beribadah </td>
+        <td>{{$examResult->spiritual_attitude}}</td>
     </tr>
 </table>
-<p>B. Kompetensi Pengetahuan dan Ketrampilan</p>
+<p>B. Kompetensi Pengetahuan dan Keterampilan</p>
 <table>
     <tr>
-        <td rowspan="2">No</td>
-        <td rowspan="2">Muatan Pelajaran</td>
+        <td rowspan="2" width="15">No</td>
+        <td rowspan="2" width="200">Muatan Pelajaran</td>
         <td colspan="3">Pengetahuan</td>
         <td colspan="3">Keterampilan</td>
     </tr>
@@ -74,41 +74,42 @@
         <td>Predikat</td>
         <td>Deskripsi</td>
     </tr>
+    @foreach($testScores as $test)
     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>{{ $loop->iteration }}</td>
+        <td>{{$test->schedule->course->name}}</td>
+        <td>{{$test->knowledge_value}}</td>
+        <td>{{$test->knowledge_predicate}}</td>
+        <td>{{$test->knowledge_description}}</td>
+        <td>{{$test->skill_value}}</td>
+        <td>{{$test->skill_predicate}}</td>
+        <td>{{$test->skill_description}}</td>
     </tr>
+    @endforeach
 </table>
 
 <p>D. Saran - saran</p>
 <table>
     <tr>
-        <td>Alhamdulillah, ananda SAJIED selama satu semester ini sudah banyak peningkatan dalam prestasi belajarnya,
-            mohon ditingkatkan lagi prestasinya. Jangan lupa sholat lima waktu dan selalu berdo'a. </td>
+        <td><p>{{$examResult->suggestion}}</p></td>
     </tr>
 </table>
 <p>E. Tinggi dan Berat Badan</p>
 <table>
     <tr>
-        <td>No</td>
+        <td width="15">No</td>
         <td>Aspek yang dinilai</td>
-        <td>Semester 1</td>
+        <td>Semester {{ $_GET['semester']}}</td>
     </tr>
     <tr>
         <td>1</td>
         <td>Tinggi Badan</td>
-        <td></td>
+        <td>{{$examResult->height}}</td>
     </tr>
     <tr>
         <td>2</td>
         <td>Berat Badan</td>
-        <td></td>
+        <td>{{$examResult->weight}}</td>
     </tr>
 </table>
 <p>F. Ketidakhadiran</p>

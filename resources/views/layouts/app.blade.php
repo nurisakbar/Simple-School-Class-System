@@ -44,6 +44,9 @@
                                     <a class="nav-link" href="/my-schedule"><i class="fa fa-calendar" aria-hidden="true"></i> My Teaching Schedule</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="/home-room-teacher?semester=1"><i class="fa fa-calendar" aria-hidden="true"></i> Wali Kelas</a>
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="/material"><i class="fa fa-book" aria-hidden="true"></i> Manage Material</a>
                                 </li>
                                 <li class="nav-item">

@@ -62,7 +62,7 @@
                                         </td>
                                     @else
                                         <td>
-                                            <a href="/schedule/{{$schedule->id}}/mark" class="btn btn-success btn-sm">Kelola Nilai</a>
+                                            <a href="/schedule/{{$schedule->id}}/score" class="btn btn-success btn-sm">Kelola Nilai</a>
                                             <a href="/attedance/{{$schedule->id}}" class="btn btn-success btn-sm">Kelola Kehadiran</a>
                                         </td>
                                     @endif

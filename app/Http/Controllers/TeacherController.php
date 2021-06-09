@@ -26,7 +26,7 @@ class TeacherController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except'=>['teacherSchedule']]);
+        $this->middleware('auth', ['except'=>['teacherSchedule','homeRoomTeacher']]);
         $this->teachingTime = ['08:00 - 10:00','10:00 - 12:00','13:00 - 15:00'];
         $this->day = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
     }
@@ -140,7 +140,7 @@ class TeacherController extends Controller
         $data['courses']        = Course::pluck('name', 'id');
         $data['class']          = StudentClass::pluck('name', 'id');
         $data['teacher']        = Teacher::find(Auth::guard('teacher')->user()->id);
-        $data['academicYear']  =AcademicYear::where('active', 'y')->first();
+        $data['academicYear']   = AcademicYear::where('active', 'y')->first();
         return view('teacher.show', $data);
     }
 
@@ -149,5 +149,12 @@ class TeacherController extends Controller
         $data['teacher'] = Teacher::find($id);
 
         return view('teacher.detail', $data);
+    }
+
+    public function homeRoomTeacher()
+    {
+        $data['teacher']        = Teacher::find(Auth::guard('teacher')->user()->id);
+        $data['students']       = $data['teacher']->studentClass->student;
+        return view('teacher.home-room-teacher', $data);
     }
 }
