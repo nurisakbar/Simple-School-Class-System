@@ -9,6 +9,8 @@ class Payment extends Model
 {
     use HasFactory;
 
+    protected $fillable=['student_id','description','payment_type','amount'];
+
     public function student()
     {
         return $this->belongsTo(\App\Models\Student::class);

@@ -28,7 +28,8 @@ class TeacherController extends Controller
     {
         $this->middleware('auth', ['except'=>['teacherSchedule','homeRoomTeacher']]);
         $this->teachingTime = ['08:00 - 10:00','10:00 - 12:00','13:00 - 15:00'];
-        $this->day = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+        //$this->day = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+        $this->day = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
     }
     
     public function index()

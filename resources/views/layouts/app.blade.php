@@ -100,13 +100,13 @@
                                     </li>        
                             @elseif(Auth::check())
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/class"><i class="fa fa-building" aria-hidden="true"></i> Manage Class</a>
+                                    <a class="nav-link" href="/class"><i class="fa fa-building" aria-hidden="true"></i> @lang('menu.manage_class')</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/student"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Manage Student</a>
+                                    <a class="nav-link" href="/student"><i class="fa fa-graduation-cap" aria-hidden="true"></i> @lang('menu.manage_student')</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/teacher"><i class="fa fa-users" aria-hidden="true"></i> Manage Teacher</a>
+                                    <a class="nav-link" href="/teacher"><i class="fa fa-users" aria-hidden="true"></i> @lang('menu.manage_teacher')</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -114,9 +114,9 @@
                                     </a>
     
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="/course">Manage Course</a>
-                                        <a class="dropdown-item" href="/room">Manage Room</a>
-                                        <a class="dropdown-item" href="/room">Manage Academic Year</a>
+                                        <a class="dropdown-item" href="/course">@lang('menu.manage_course')</a>
+                                        <a class="dropdown-item" href="/room">@lang('menu.manage_room')</a>
+                                        <a class="dropdown-item" href="/academic">@lang('menu.manage_academic_year')</a>
                                     </div>
             
                                 </li>
@@ -124,7 +124,7 @@
                                     <a class="nav-link" href="/manage-pmb"><i class="fa fa-users" aria-hidden="true"></i> PMB</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/payment"><i class="fa fa-money" aria-hidden="true"></i> Manage Payment</a>
+                                    <a class="nav-link" href="/payment"><i class="fa fa-money" aria-hidden="true"></i> @lang('menu.manage_payment')</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -149,17 +149,17 @@
                                     
                             @else
                                 @if (Route::has('login'))
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">Admin Login</a>
-                                </li>
+                                </li> --}}
                                 @endif
 
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" href="/teacher-login">Teacher Login</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/student-login">Student Login</a>
-                                </li>
+                                </li> --}}
                                 
                                 @if (Route::has('register'))
                                     <li class="nav-item">

@@ -41,7 +41,7 @@
                                 <td>{{$student->student_id}}</td>
                                 <td>{{$student->name}}</td>
                                 @for($i=1;$i<=$jumlahKehadiran;$i++)
-                                    <th>{{ getAttendance($student->id, Request::segment(2), $i) }}</th>
+                                    <td>{{ getAttendance($student->id, Request::segment(2), $i) }}</td>
                                 @endfor
                             </tr>
                             @endforeach

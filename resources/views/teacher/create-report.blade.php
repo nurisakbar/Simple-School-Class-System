@@ -76,7 +76,7 @@
                                     <td></td>
                                     <td>
                                         <button type="submit" class="btn btn-info">Simpan</button>
-                                        <a href="/home-room-teacher" class="btn btn-info">Kembali</a>
+                                    <a href="/home-room-teacher?semester={{$_GET['semester']??1}}" class="btn btn-info">Kembali</a>
                                     </td>
                                 </tr>
             

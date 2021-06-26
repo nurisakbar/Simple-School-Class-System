@@ -8,15 +8,15 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    <a href="{{route('student.create')}}" class="btn btn-primary">Create New Student</a>
+                    <a href="{{route('student.create')}}" class="btn btn-primary">Tambah Data</a>
                     <hr>
                     @include('alert')
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>Student ID</th>
-                                <th>Name</th>
-                                <th>Class</th>
+                                <th>NIS</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
                                 <th>Email</th>
                                 <th width="190">Action</th>
                             </tr>

@@ -8,7 +8,7 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    <a href="{{route('class.create')}}" class="btn btn-primary">Create New Class</a>
+                    <a href="{{route('class.create')}}" class="btn btn-primary">Tambah Data Kelas</a>
                     <hr>
                     @include('alert')
                     <table class="table table-bordered" id="tabel-data">
@@ -19,7 +19,7 @@
                                 <th>Jumlah Siswa</th>
                                 <th>Jadwal</th>
                                 <th width="40">Detail</th>
-                                <td width="120">Action</td>
+                                <th width="120">Action</th>
                             </tr>
                         </thead>
                         <tbody>

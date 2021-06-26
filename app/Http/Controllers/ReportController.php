@@ -38,7 +38,7 @@ class ReportController extends Controller
     {
         $ifExist = ['semester'=>$request->semester,'student_id'=>$request->student_id];
         ExamResult::updateOrCreate($ifExist, $request->all());
-        return redirect('report?student_id='.$request->student)->with('message', 'Berhasil Menyimpan Data');
+        return redirect('report?type=input&student_id='.$request->student.'&semester='.$request->semester)->with('message', 'Berhasil Menyimpan Data');
     }
     
     public function reportPdf()

@@ -15,15 +15,16 @@ class CreateTestScoresTable extends Migration
     {
         Schema::create('test_scores', function (Blueprint $table) {
             $table->id();
-            $table->integer('schedule_id');
-            $table->integer('student_id');
-            $table->integer('knowledge_value');
+            $table->integer('schedule_id', false)->unsigned();
+            $table->integer('student_id', false)->unsigned();
+            $table->integer('skill_value', false)->unsigned();
+            $table->integer('knowledge_value', false)->unsigned();
             $table->string('knowledge_predicate', 1);
             $table->text('knowledge_description');
-            $table->integer('skill_value');
             $table->string('skill_predicate', 1);
             $table->text('skill_description');
-            $table->integer('semester', 1);
+            $table->integer('semester', false)->unsigned();
+            ;
             $table->timestamps();
         });
     }

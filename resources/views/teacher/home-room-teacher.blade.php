@@ -69,7 +69,7 @@
                                 <td>{{$student->skill_value??0}}</td>
                                 <td>{{$student->semester??1}}</td>
                                 <td>
-                                    <a href="/report?student_id={{$student->student_id}}&type=input" class="btn btn-primary">Input Raport</a>
+                                    <a href="/report?student_id={{$student->student_id}}&type=input&semester=1" class="btn btn-primary">Input Raport</a>
                                     <a href="/report?student_id={{$student->student_id}}&type=pdf&semester={{ $_GET['semester']}}" class="btn btn-primary">Lihat Raport</a>
                                 </td>
                             </tr>

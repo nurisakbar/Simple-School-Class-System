@@ -7,15 +7,15 @@
             <div class="card">
                 <div class="card-header">@yield('title')</div>
                 <div class="card-body">
-                    <a href="{{route('teacher.create')}}" class="btn btn-primary">Create New Teacher</a>
+                    <a href="{{route('teacher.create')}}" class="btn btn-primary">Tambah Data Guru</a>
                     <hr>
                     @include('alert')
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Nama Lengkap</th>
                                 <th>Email</th>
-                                <th>Phone</th>
+                                <th>No HP</th>
                                 <th width="140"></th>
                                 <th width="190">Action</th>
                             </tr>
@@ -27,7 +27,7 @@
                                 <td>{{$teacher->email}}</td>
                                 <td>{{$teacher->phone}}</td>
                                 <td>
-                                    <a href="{{ route('teacher.show', ['teacher' => $teacher->id])  }}" class="btn btn-primary">Teaching Schedule</a>
+                                    <a href="{{ route('teacher.show', ['teacher' => $teacher->id])  }}" class="btn btn-primary">Jadwal Mengajar</a>
                                 </td>
                                 <td>
                                     <a href="/teacher/{{$teacher->id}}/edit" class="btn btn-primary" style="float:left;margin-right:10px;">Edit</a>

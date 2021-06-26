@@ -19,6 +19,8 @@ class AuthController extends Controller
             return redirect()->intended('/');
         } elseif ($request->level=='teacher' && Auth::guard('teacher')->attempt($credentials)) {
             return redirect('my-schedule');
+        } elseif ($request->level=='student' && Auth::guard('student')->attempt($credentials)) {
+            return redirect('student-dashboard');
         }
 
         return redirect('login')->with('message', 'Email Atau Password Salah');
@@ -28,6 +30,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         Auth::guard('teacher')->logout();
+        Auth::guard('student')->logout();
         return redirect('login');
     }
 }

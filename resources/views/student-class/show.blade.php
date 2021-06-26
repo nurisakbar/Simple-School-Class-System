@@ -10,12 +10,12 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>List Students</h4>
+                            <h4>Daftar Siswa</h4>
                             <hr>
                             <table class="table table-bordered" id="tabel-data">
                                 <thead>
                                     <tr>
-                                        <th>Student ID</th>
+                                        <th>NIS</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                     </tr>
@@ -32,7 +32,7 @@
                             </table>
                         </div>
                         <div class="col-md-6">
-                            <h4>List Schedules</h4>
+                            <h4>Jadwal Pelajaran</h4>
                             <hr>
                             <table class="table table-bordered" id="tabel-data">
                                 <thead>
