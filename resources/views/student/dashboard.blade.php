@@ -12,40 +12,63 @@
                     <hr>
                     @include('student.profile')
 
-                    <h3>My Schedule And Mark</h3>
-                    <hr>
+                    @if($tab=='nilai')
+                    <h3>Nilai</h3>
+                    <br>
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>Time</th>
-                                <th>Course</th>
-                                <th>Teacher Name</th>
-                                <th>Room</th>
-                                <th>First</th>
-                                <th>Mid</th>
-                                <th>Final</th>
+                                <th width="10">No</th>
+                                <th>Matapelajaran</th>
+                                <th>Nama Guru</th>
+                                <th>Nilai Pengetahuan</th>
+                                <th>Nilai Keterampilan</th>
+                                <th>Semester</th>
                             </tr>
                         </thead>
-                        @if(count($schedules)<1)
-                            <tr>
-                                <td colspan="7">No Data Found</td>
-                            </tr>
-                        @else
                         <tbody>
-                            @foreach($schedules as $schedule)
-                                <tr>
-                                    <td>{{$schedule->time}}</td>
-                                    <td>{{$schedule->course->name}}</td>
-                                    <td>{{$schedule->teacher->name}}</td>
-                                    <td>{{$schedule->room->name}}</td>
-                                    <td>{{$schedule->first??0}}</td>
-                                    <td>{{$schedule->mid??0}}</td>
-                                    <td>{{$schedule->final??0}}</td>
-                                </tr>
+                        @foreach($scores as $score)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$score->schedule->course->name}}</td>
+                                <td>{{$score->schedule->teacher->name}}</td>
+                                <td>{{$score->knowledge_value}} / {{$score->knowledge_predicate}}</td>
+                                <td>{{$score->skill_value}} / {{$score->skill_predicate}}</td>
+                                <td>{{$score->semester}}</td>
+                            </tr>
                             @endforeach
                         </tbody>
-                        @endif
                     </table>
+                    @else
+                        <h3>Jadwal Pelajaran</h3>
+                        <hr>
+                        <table class="table table-bordered" id="tabel-data">
+                            <thead>
+                                <tr>
+                                    <th>Jam</th>
+                                    <th>Mata Pelajaran</th>
+                                    <th>Nama Guru</th>
+                                    <th>Ruangan</th>
+                                </tr>
+                            </thead>
+                            @if(count($schedules)<1)
+                                <tr>
+                                    <td colspan="7">No Data Found</td>
+                                </tr>
+                            @else
+                            <tbody>
+                                @foreach($schedules as $schedule)
+                                    <tr>
+                                        <td>{{$schedule->time}}</td>
+                                        <td>{{$schedule->course->name}}</td>
+                                        <td>{{$schedule->teacher->name}}</td>
+                                        <td>{{$schedule->room->name}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                            @endif
+                        </table>
+                    @endif
                 </div>
             </div>
         </div>

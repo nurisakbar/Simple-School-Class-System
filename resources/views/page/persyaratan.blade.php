@@ -2,8 +2,10 @@
 @extends('pmb.layout')
 @section('content')
 <div class="container"  style="background-color:white;margin-top:20px;">
+    
     <main role="main">
-        <h2>Prosedure Pendaftaran</h2>
+        @include('page.slider')
+        <h2>Persyaratan Pendaftaran</h2>
         <hr>
         <ol>
             <li>Berkas pendaftaran online yang sudah diisi lengkap &amp; di-print out.</li>

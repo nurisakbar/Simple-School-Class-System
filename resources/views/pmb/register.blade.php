@@ -13,7 +13,7 @@
                 </div>
             @elseif($pmb->payment_status!=null)
               <div class="alert alert-success" role="alert">
-                Pembayaran anda sudah terkonfirmasi, downloat kartu ujian disini.
+                Pembayaran anda sudah terkonfirmasi, downloat kartu ujian <a target="new" href="/pmb/kartu-ujian">disini.</a>
             </div>
             @else
             <div class="alert alert-success" role="alert">

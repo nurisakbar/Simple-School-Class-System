@@ -21,10 +21,11 @@
 
     <nav class="navbar navbar-expand-md navbar-light bg-light">
       <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <div class="container">
           <ul class="navbar-nav mr-auto">
-              <li class="nav-item active">
+              {{-- <li class="nav-item active">
                   <a class="nav-link" href="/page/home">Home</a>
-              </li>
+              </li> --}}
               <li class="nav-item">
                   <a class="nav-link" href="/page/prosedur">Prosedur Pendaftaran</a>
               </li>
@@ -38,13 +39,14 @@
                   <a class="nav-link" href="/pmb/hasil">Hasil Seleksi</a>
               </li>
           </ul>
+       
       </div>
 
       <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
           <ul class="navbar-nav ml-auto">
             @if(session('pmb_name')=='')
             <li class="nav-item">
-              <a class="nav-link" href="/pmb/login">Login</a>
+              <a class="nav-link" href="/pmb/login">Login Calon Siswa</a>
             </li>
           @else
             <li class="nav-item">
@@ -60,13 +62,16 @@
 
     @yield('content')
 
+
+
+    
+
     <footer class="text-muted">
       <div class="container">
         <p class="float-right">
           <a href="#">Back to top</a>
         </p>
-        <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+        <p class="text-center">Penerimaan Siswa Baru Berbasis Online - Sekolah Dasar Persis Kota Bandung</p>
       </div>
     </footer>
 

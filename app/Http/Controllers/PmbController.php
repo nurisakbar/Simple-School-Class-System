@@ -30,7 +30,8 @@ class PmbController extends Controller
 
     public function hasil()
     {
-        return view('pmb.hasil');
+        $data['pmbs'] = Pmb::where('pass_status', '!=', null)->get();
+        return view('pmb.hasil', $data);
     }
 
     public function registerAct(Request $request)
@@ -93,5 +94,18 @@ class PmbController extends Controller
     {
         $data['pmbs'] = Pmb::all();
         return view('pmb.manage', $data);
+    }
+
+
+    public function kartuUjian()
+    {
+        if (session('pmb_id')==null) {
+            return redirect('pmb/login');
+        }
+        $data['pmb'] = Pmb::where('id', session('pmb_id'))->first();
+        $pdf = \PDF::loadView('pmb.kartu-ujian', $data);
+        $customPaper = array(0,0,360,360);
+        $pdf->setPaper($customPaper);
+        return $pdf->stream('kartu');
     }
 }

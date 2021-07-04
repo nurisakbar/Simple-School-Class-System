@@ -72,14 +72,17 @@
                                     </li>
                             @elseif(Auth::guard('student')->check())
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/student-dashboard"><i class="fa fa-calendar" aria-hidden="true"></i> My Schedule</a>
+                                    <a class="nav-link" href="/student-dashboard?tab=jadwal"><i class="fa fa-calendar" aria-hidden="true"></i> Jadwal Pelajaran</a>
                                 </li>
                                 <li class="nav-item">
+                                    <a class="nav-link" href="/student-dashboard?tab=nilai"><i class="fa fa-calendar" aria-hidden="true"></i> Lihat Nilai</a>
+                                </li>
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" href="/material"><i class="fa fa-book" aria-hidden="true"></i> My Material</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/task"><i class="fa fa-tasks" aria-hidden="true"></i> My Task</a>
-                                </li>
+                                </li> --}}
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             <i class="fa fa-user-circle" aria-hidden="true"></i> {{ Auth::guard('student')->user()->name }}

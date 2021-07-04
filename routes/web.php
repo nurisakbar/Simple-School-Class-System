@@ -57,6 +57,7 @@ Route::post('report', [App\Http\Controllers\ReportController::class, 'reportAct'
 
 
 Route::get('pmb', [App\Http\Controllers\PmbController::class, 'index']);
+Route::get('pmb/kartu-ujian', [App\Http\Controllers\PmbController::class, 'kartuUjian']);
 Route::get('pmb/hasil', [App\Http\Controllers\PmbController::class, 'hasil']);
 Route::get('page/{page}', [App\Http\Controllers\PmbController::class, 'page']);
 Route::get('pmb/login', [App\Http\Controllers\PmbController::class, 'login']);

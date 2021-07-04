@@ -20,7 +20,7 @@
                                 <th>Payment Type</th>
                                 <th>Amount</th>
                                 <th>Description</th>
-                                <th width="120"></th>
+                                <th width="200"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,6 +32,7 @@
                                 <td>{{$payment->amount}}</td>
                                 <td>{{$payment->description}}</td>
                                 <td>
+                                    <a href="/payment/{{$payment->id}}" class="btn btn-primary" style="float:left;margin-right:10px;">Cetak</a>
                                     <a href="/payment/{{$payment->id}}/edit" class="btn btn-primary" style="float:left;margin-right:10px;">Edit</a>
                                     {!! Form::open(['route'=>['payment.destroy',$payment->id],'method'=>'delete']) !!}
                                         <button class="btn btn-primary" type="submit">Delete</button>

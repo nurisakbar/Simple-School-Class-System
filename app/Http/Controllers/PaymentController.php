@@ -9,11 +9,11 @@ use App\Http\Requests\PaymentRequest;
 
 class PaymentController extends Controller
 {
-     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    /**
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
 
     
     public function index()
@@ -29,7 +29,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        $data['student'] = Student::pluck('name' , 'id');
+        $data['student'] = Student::pluck('name', 'id');
         return view('payment.create', $data);
     }
 
@@ -51,9 +51,11 @@ class PaymentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Teacher $teacher)
+    public function show(Payment $payment)
     {
-       
+        $data['payment'] = $payment;
+        //return $data;
+        return view('payment.pdf', $data);
     }
 
     /**
@@ -95,5 +97,4 @@ class PaymentController extends Controller
         $payment->delete();
         return redirect('payment')->with('message', 'payment Has Deleted');
     }
-
 }

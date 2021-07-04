@@ -2,30 +2,22 @@
 @section('content')
 <div class="container"  style="background-color:white;margin-top:20px;">
     <main role="main">
-        <h2>FORMULIR LOGIN PESERTA DIDIK</h2>
+        <h2>Pengumuman Kelulusan PMB Tahun 2021</h2>
         <hr>
-        {!! Form::open(['url'=>'pmb/login']) !!}
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-bordered">
-                    <tr>
-                        <td width="250">No Induk Kependudukan</td>
-                        <td>{!! Form::text('nik', null, ['class'=>'form-control','placeholder'=>'NIK']) !!}</td>
-                    </tr>
-                    <tr>
-                        <td>Tanggal Lahir</td>
-                        <td>{!! Form::date('birth_date', null, ['class'=>'form-control','placeholder'=>'Tanggal Lahir']) !!}</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <button type="submit" class="btn btn-info">Login</button>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        {!! Form::close() !!}
+        <table class="table table-bordered" id="tabel-data">
+            <tr>
+                <th width="40">Nomor</th>
+                <th>Nama Calon Siswa</th>
+                <th>Status Kelulusan</th>
+            </tr>
+            @foreach($pmbs as $pmb)
+            <tr>
+                <td>{{$loop->iteration }}</td>
+                <td>{{$pmb->name}}</td>
+                <td>{{$pmb->pass_status=='y'?'Lulus':'Tidak Lulus'}}</td>
+            </tr>
+            @endforeach
+        </table>
     </main>
 </div>
 @endsection

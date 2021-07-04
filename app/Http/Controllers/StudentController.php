@@ -6,6 +6,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Requests\StudentCreate;
 use App\Models\StudentClass;
+use App\Models\TestScores;
 use Auth;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +19,7 @@ class StudentController extends Controller
     public function __construct()
     {
         $this->middleware('auth', ['except'=>['dashboard']]);
-        $this->religion = ['Islam','Kristen','Budha'];
+        $this->religion = ['Islam','Kristen','Budha','Konghuchu'];
         $this->education = ['SD','SMP','SMA'];
         $this->workKind = ['Karyawan Swasta','Lain nya'];
     }
@@ -127,11 +128,14 @@ class StudentController extends Controller
 
     public function dashboard()
     {
+        $data['tab']        = $_GET['tab']??'jadwal';
         $student            = Auth::guard('student')->user();
         $data['student']    = $student;
         $data['schedules']  = Schedule::with('course', 'teacher')->leftJoin('marks', function ($leftJoin) use ($student) {
             $leftJoin->on('marks.schedule_id', '=', 'schedules.id')->where('schedules.student_class_id', $student->student_class_id)->where('marks.student_id', $student->id);
         })->get();
+
+        $data['scores'] = TestScores::where('student_id', $student->id)->get();
         return view('student.dashboard', $data);
     }
 }
