@@ -15,8 +15,7 @@
     </div>
     <div class="half" style="text-align: center">
         KARTU UJIAN MASUK SEKOLAH<br>
-        SDN 2 Muhammadiyah<br>
-        Kota Bandung
+        Sekolah Dasar Persis <br>Kota Bandung<br>
     </div>
 </div>
 <hr>
@@ -36,6 +35,14 @@
             <tr>
                 <td>Jenis Kelamin</td>
                 <td>: {{$pmb->gender=='m'?'Laki Laki':'Perempuan'}}</td>
+            </tr>
+            <tr>
+                <td>Tanggal Ujian</td>
+                <td>: {{$pmb->test_schedule}}</td>
+            </tr>
+            <tr>
+                <td>Ruangan</td>
+                <td>: {{$pmb->room->name}}</td>
             </tr>
         </table>
     </div>

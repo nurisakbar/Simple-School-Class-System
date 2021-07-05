@@ -26,7 +26,7 @@
 
                     @include('alert')
                     <hr>
-                    <h5>LIST STUDENT IN CLASS</h5>
+                    <h5>DAFTAR SISWA</h5>
                     {!! Form::open(['url'=>'home-room-teacher','method'=>'GET']) !!}
                     <table class="table table-bordered">
                         <tr>

@@ -44,7 +44,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Level</label>
 
                             <div class="col-md-6">
-                                {!! Form::select('level', ['admin'=>'Administrator','teacher'=>'Teacher','student'=>'Student'], null, ['class'=>'form-control']) !!}
+                                {!! Form::select('level', ['admin'=>'Administrator','teacher'=>'Guru','student'=>'Siswa'], null, ['class'=>'form-control']) !!}
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">

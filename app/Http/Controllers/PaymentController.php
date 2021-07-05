@@ -55,7 +55,11 @@ class PaymentController extends Controller
     {
         $data['payment'] = $payment;
         //return $data;
-        return view('payment.pdf', $data);
+        // return view('payment.pdf', $data);
+        $pdf = \PDF::loadView('payment.pdf', $data);
+        $customPaper = array(0,0,360,360);
+        $pdf->setPaper($customPaper);
+        return $pdf->stream('payment');
     }
 
     /**

@@ -59,7 +59,7 @@
                             <tbody>
                                 @foreach($schedules as $schedule)
                                     <tr>
-                                        <td>{{$schedule->time}}</td>
+                                        <td>{{$schedule->day}}, {{$schedule->time}}</td>
                                         <td>{{$schedule->course->name}}</td>
                                         <td>{{$schedule->teacher->name}}</td>
                                         <td>{{$schedule->room->name}}</td>

@@ -31,6 +31,18 @@ class AttedanceController extends Controller
 
     public function store(Request $request)
     {
-        return Attedance::create($request->all());
+        $where = ['schedule_id'=>$request->schedule_id,'student_id'=>$request->student_id,'date'=>$request->date,'meet_to'=>$request->meet_to];
+        return Attedance::updateOrCreate($where, $request->all());
+    }
+
+
+    public function edit($id)
+    {
+        $data['attedance']          = Attedance::where('meet_to', $_GET['pertemuan_ke'])->where('schedule_id', $_GET['id'])->first();
+        $scheduleId                 = $id;
+        $data['schedule']           = Schedule::find($scheduleId);
+        $data['jumlahKehadiran']    = $this->jumlahKehadiran;
+        $data['attedanceStatus']    = $this->attedanceStatus;
+        return view('attedance.edit', $data);
     }
 }

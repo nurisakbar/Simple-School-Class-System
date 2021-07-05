@@ -26,7 +26,7 @@
 
                     @include('alert')
 
-                    <div>TEACHING SCHEDULE 
+                    <div>JADWAL MENGAJAR
                         @if(Auth::check())
                             <a style="float: right;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">Add New Schedule</a>
                         @endif

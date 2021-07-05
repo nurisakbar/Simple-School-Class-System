@@ -31,6 +31,14 @@
                                     <td>{!! Form::select('pass_status', [null=>'Belum',1=>'Lulus',0=>'Tidak Lulus'], $pmb->pass_status, ['class'=>'form-control']) !!}</td>
                                 </tr>
                                 <tr>
+                                    <td>Waktu Ujian</td>
+                                    <td>{!! Form::date('test_schedule', $pmb->test_schedule, ['class'=>'form-control']) !!}</td>
+                                </tr>
+                                <tr>
+                                    <td width="160">Ruangan</td>
+                                    <td>{!! Form::select('room_id', $rooms, $pmb->room_id, ['class'=>'form-control']) !!}</td>
+                                </tr>
+                                <tr>
                                     <td colspan="2">
                                         <div class="row">
                                             <div class="col-md-6">

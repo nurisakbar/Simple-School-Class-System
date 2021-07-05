@@ -71,8 +71,9 @@ class PmbController extends Controller
 
     public function show($id)
     {
-        $data['pmb'] = Pmb::find($id);
-        $data['page'] = "show";
+        $data['rooms']  = \App\Models\Room::pluck('name', 'id');
+        $data['pmb']    = Pmb::find($id);
+        $data['page']   = "show";
         return view('pmb.show', $data);
     }
 

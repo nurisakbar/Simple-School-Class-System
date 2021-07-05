@@ -8,7 +8,7 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    <a href="{{route('payment.create')}}" class="btn btn-primary">Create New payment</a>
+                    <a href="{{route('payment.create')}}" class="btn btn-primary">Input Pembayaran</a>
                     <hr>
       
                     @include('alert')

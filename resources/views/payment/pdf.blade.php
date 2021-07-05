@@ -13,19 +13,28 @@
         <td colspan="2">Kwitansi Pembayaran</td>
     </tr>
     <tr>
-        <td>Nomor</td>
-        <td>Tanggal</td>
+        <td width="100">Tanggal</td>
+        <td> : {{date('d - m -Y')}}</td>
     </tr>
     <tr>
         <td>Terima Dari</td>
-        <td>{{$payment->student->name}}</td>
+        <td> : {{$payment->student->name}}</td>
     </tr>
     <tr>
         <td>Terbilang</td>
-        <td>{{$payment->amount}}</td>
+        <td> : {{$payment->amount}}</td>
     </tr>
     <tr>
         <td>Untuk Pembayaran</td>
-        <td>{{$payment->type}}</td>
+        <td> : {{$payment->payment_type}}</td>
     </tr>
 </table>
+
+
+
+<p>Diterima Oleh</p>
+<br><br><br>
+
+
+
+<p>Bagian Keuangan</p>

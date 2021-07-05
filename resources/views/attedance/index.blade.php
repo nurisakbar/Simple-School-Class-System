@@ -31,7 +31,7 @@
                                 <th>NIK</th>
                                 <th>Nama Siswa</th>
                                 @for($i=1;$i<=$jumlahKehadiran;$i++)
-                                    <th>Ke-{{$i}}</th>
+                                <th><a href="/attedance/{{ Request::segment(2) }}/edit?pertemuan_ke={{$i}}&id={{ Request::segment(2) }}">Ke-{{$i}}</a></th>
                                 @endfor
                             </tr>
                         </thead>
