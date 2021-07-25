@@ -39,6 +39,9 @@ class AttedanceController extends Controller
     public function edit($id)
     {
         $data['attedance']          = Attedance::where('meet_to', $_GET['pertemuan_ke'])->where('schedule_id', $_GET['id'])->first();
+        if ($data['attedance'] ==null) {
+            return redirect('attedance/'.$id)->with('message', 'Anda Belum Melakukan Input Pertemuan');
+        }
         $scheduleId                 = $id;
         $data['schedule']           = Schedule::find($scheduleId);
         $data['jumlahKehadiran']    = $this->jumlahKehadiran;

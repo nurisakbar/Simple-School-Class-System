@@ -12,6 +12,8 @@ use App\Models\ExamResult;
 
 class ReportController extends Controller
 {
+    public $extraCuriculer = ['Tahfidz','Pramuka','Futsal','Silat'];
+
     public function report()
     {
         $student                = Student::where('student_id', $_GET['student_id'])->first();
@@ -21,32 +23,30 @@ class ReportController extends Controller
         $data['student']        = Student::where('student_id', $_GET['student_id'])->first();
         $data['examResult']     = ExamResult::where('student_id', $data['student']->id)->first();
         $data['testScores']     = TestScores::where('semester', $_GET['semester'])->where('student_id', $student->id)->get();
-
-        // $x = Schedule::leftJoin('test_scores', function ($join) {
-        //     $join->on('schedules.id', '=', 'test_scores.schedule_id')->where('test_scores.semester', 1);
-        // })->where('student_class_id', $data['student']->student_class_id)->first();
         if ($_GET['type']=='pdf') {
-            $pdf = \PDF::loadView('report.semester', $data);
-            return $pdf->stream();
-        //return view('report.semester', $data);
+            // $pdf = \PDF::loadView('report.semester', $data);
+            // return $pdf->stream();
+            return view('report.semester', $data);
         } else {
+            $data['extraCuriculer'] = $this->extraCuriculer;
             return view('teacher.create-report', $data);
         }
     }
 
     public function reportAct(Request $request)
     {
+        $extraCuriculer = [];
+        $extraCuriculerIndex = 0;
+        foreach ($request->extra_curiculer_name as $extra) {
+            $extraCuriculer[] = $request->extra_curiculer_value[$extraCuriculerIndex];
+            $extraCuriculerIndex++;
+        }
+
+        $data                       = $request->all();
+        $data['extra_curiculer']    = serialize($extraCuriculer);
+
         $ifExist = ['semester'=>$request->semester,'student_id'=>$request->student_id];
-        ExamResult::updateOrCreate($ifExist, $request->all());
+        ExamResult::updateOrCreate($ifExist, $data);
         return redirect('report?type=input&student_id='.$request->student.'&semester='.$request->semester)->with('message', 'Berhasil Menyimpan Data');
-    }
-    
-    public function reportPdf()
-    {
-        $data[]="";
-        $pdf = \PDF::loadView('report.semester', $data);
-        return $pdf->stream();
-        // return $pdf->download('invoice.pdf');
-        //return view('report.semester');
     }
 }

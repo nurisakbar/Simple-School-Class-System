@@ -57,6 +57,11 @@
         <td>Sikap Spiritual</td>
         <td>{{$examResult->spiritual_attitude}}</td>
     </tr>
+    <tr>
+        <td>2</td>
+        <td>Sikap Sosial</td>
+        <td>{{$examResult->social_attitude}}</td>
+    </tr>
 </table>
 <p>B. Kompetensi Pengetahuan dan Keterampilan</p>
 <table>
@@ -87,6 +92,14 @@
     </tr>
     @endforeach
 </table>
+
+<p>C. Ekstra Kurikuler</p>
+<tr>
+    <th>No</th>
+    <th>Kegiatan Ekstra Kurikuler</th>
+    <th>Keterangan</th>
+</tr>
+
 
 <p>D. Saran - saran</p>
 <table>
@@ -138,8 +151,8 @@ Orang Tua/ Wali
 .............................
 </div>
 <div style="width:40%;border:1px solid black;float:right">
-    Bandung,18 Desember 2020<br>
+Bandung, {{date('d  M Y')}}<br>
 Guru Kelas
 <br><br><br><br><br><br><br><br>
-CUCU KHOTIMAH,S.Si.,S.Pd
+{{$student->class->teacher->name}}
 </div>

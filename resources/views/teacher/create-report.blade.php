@@ -37,16 +37,16 @@
                             {!! Form::hidden('student', $student->student_id) !!}
                             <table class="table table-bordered">
                                 <tr>
-                                    <td>SIKAP SPRITUAL</td>
-                                    <td>{!! Form::textarea('spiritual_attitude', null, ['class'=>'form-control','placeholder'=>'Deskripsi','rows'=>2,'required'=>'required']) !!}</td>
+                                    <td width="200">SIKAP SPRITUAL</td>
+                                    <td>{!! Form::textarea('spiritual_attitude', null, ['class'=>'form-control','placeholder'=>'Deskripsi','rows'=>1,'required'=>'required']) !!}</td>
                                 </tr>
                                 <tr>
                                     <td>SIKAP SOSIAL</td>
-                                    <td>{!! Form::textarea('social_attitude', null, ['class'=>'form-control','placeholder'=>'Deskripsi','rows'=>2,'required'=>'required']) !!}</td>
+                                    <td>{!! Form::textarea('social_attitude', null, ['class'=>'form-control','placeholder'=>'Deskripsi','rows'=>1,'required'=>'required']) !!}</td>
                                 </tr>
                                 <tr>
                                     <td>SARAN SARAN</td>
-                                    <td>{!! Form::textarea('suggestion', null, ['class'=>'form-control','placeholder'=>'Deskripsi','rows'=>2,'required'=>'required']) !!}</td>
+                                    <td>{!! Form::textarea('suggestion', null, ['class'=>'form-control','placeholder'=>'Deskripsi','rows'=>1,'required'=>'required']) !!}</td>
                                 </tr>
                                 <tr>
                                     <td>TINGGI & BERAT BADAN</td>
@@ -61,6 +61,44 @@
                                         </div>
                                     </td>
                                 </tr>
+
+                                @if(isset($examResult->extra_curiculer))
+                                <?php 
+                                $extraIndex=0;
+                                $extraResult = unserialize($examResult->extra_curiculer);
+                                ?>
+                                <tr>
+                                    <td>Extra Kurikuler</td>
+                                    <td>
+                                        <div class="row">
+                                            @foreach($extraCuriculer as $extra)
+                                            <div class="col-md-3 text-left">{{$extra}} : </div>
+                                            <div class="col-md-4"> 
+                                                {{ Form::hidden('extra_curiculer_name[]',$extra)}}
+                                                {{Form::text('extra_curiculer_value[]',$extraResult[$extraIndex]??0,['class'=>'form-control','style'=>'margin-bottom:10px'])}}</div>
+                                            <div class="col-md-5"></div>
+                                            <?php $extraIndex++;?>
+                                            @endforeach
+                                        </div>
+                                    </td>
+                                </tr>
+                                @else
+                                <tr>
+                                    <td>Extra Kurikuler</td>
+                                    <td>
+                                        <div class="row">
+                                            @foreach($extraCuriculer as $extra)
+                                            <div class="col-md-3 text-left">{{$extra}} : </div>
+                                            <div class="col-md-4"> 
+                                                {{ Form::hidden('extra_curiculer_name[]',$extra)}}
+                                                {{Form::text('extra_curiculer_value[]',null,['class'=>'form-control','style'=>'margin-bottom:10px'])}}</div>
+                                            <div class="col-md-5"></div>
+                                            
+                                            @endforeach
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endif
                                 <tr>
                                     <td>Semester</td>
                                     <td>

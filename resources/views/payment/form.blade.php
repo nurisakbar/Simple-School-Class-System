@@ -1,23 +1,34 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            <label>Student</label>
+            <label>Pilih Jenis</label>
+            {!! Form::select('jenis',['siswa'=>'siswa','calon_siswa'=>'calon siswa'],null,['class' => 'form-control jenis','onChange'=>'pilihJenis()']) !!}
+        </div>
+        <div class="form-group siswa">
+            <label>Pilih Siswa</label>
             {!! Form::select('student_id',$student,null,['class' => 'form-control custom-select']) !!}
+            @if($errors->has('student_id'))
+                <small id="emailHelp" class="form-text text-danger">{{ $errors->first('student_id') }}</small>
+            @endif
+        </div>
+        <div class="form-group calon_siswa">
+            <label>Ketik Nama</label>
+            {!! Form::text('name',null,['class' => 'form-control','placeholder'=>'Ketik Nama']) !!}
             @if($errors->has('student_id'))
                 <small id="emailHelp" class="form-text text-danger">{{ $errors->first('student_id') }}</small>
             @endif
         </div>
         
         <div class="form-group">
-            <label>Payment Type</label>
-            {!! Form::select('payment_type',['dsp' => 'Dsp' , 'spp' => 'Spp' , 'dll' => 'Dll'],null,['class' => 'form-control custom-select']) !!}
+            <label>Kategori Pembayaran</label>
+            {!! Form::select('payment_type',['ppdb'=>'PPDB','Tabungan Siswa'=>'Tabungan Siswa','Daftar Ulang'=>'Daftar Ulang','dsp' => 'Dsp' , 'spp' => 'Spp' , 'dll' => 'Dll'],null,['class' => 'form-control custom-select']) !!}
             @if($errors->has('payment_type'))
                 <small id="emailHelp" class="form-text text-danger">{{ $errors->first('payment_type') }}</small>
             @endif
         </div>
         
         <div class="form-group">
-            <label>Amount</label>
+            <label>Jumlah</label>
             {!! Form::text('amount',null,['class' => 'form-control']) !!}
             @if($errors->has('amount'))
                 <small id="emailHelp" class="form-text text-danger">{{ $errors->first('amount') }}</small>
@@ -39,3 +50,29 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    $(document).ready(function(){
+        pilihJenis();
+    });
+
+
+function pilihJenis()
+{
+    console.log('ok');
+    
+        var jenis = $(".jenis").val();
+        console.log(jenis);
+        if(jenis=='siswa')
+        {
+            $(".siswa").show();
+            $(".calon_siswa").hide();
+        }else{
+            
+            $(".siswa").hide();
+            $(".calon_siswa").show();
+        }
+      
+}
+</script>

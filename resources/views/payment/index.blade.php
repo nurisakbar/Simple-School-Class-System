@@ -27,10 +27,10 @@
                             @foreach($payment as $payment)
                             <tr>
                                 <td>#{{ $loop->iteration }}</td>
-                                <td>{{$payment->student->name}}</td>
+                                <td>{{$payment->name==null?$payment->student->name:$payment->name}}</td>
                                 <td>{{$payment->payment_type}}</td>
                                 <td>{{$payment->amount}}</td>
-                                <td>{{$payment->description}}</td>
+                                <td>{!!$payment->description!!}</td>
                                 <td>
                                     <a href="/payment/{{$payment->id}}" class="btn btn-primary" style="float:left;margin-right:10px;">Cetak</a>
                                     <a href="/payment/{{$payment->id}}/edit" class="btn btn-primary" style="float:left;margin-right:10px;">Edit</a>

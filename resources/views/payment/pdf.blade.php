@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td>Terima Dari</td>
-        <td> : {{$payment->student->name}}</td>
+        <td> : {{$payment->name==null?$payment->student->name:$payment->name}}</td>
     </tr>
     <tr>
         <td>Terbilang</td>

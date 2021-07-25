@@ -28,11 +28,14 @@
                                 </tr>
                                 <tr>
                                     <td width="160">Status Kelulusan</td>
-                                    <td>{!! Form::select('pass_status', [null=>'Belum',1=>'Lulus',0=>'Tidak Lulus'], $pmb->pass_status, ['class'=>'form-control']) !!}</td>
+                                    <td>{!! Form::select('pass_status', [null=>'Belum','y'=>'Lulus','n'=>'Tidak Lulus'], $pmb->pass_status, ['class'=>'form-control']) !!}</td>
                                 </tr>
                                 <tr>
                                     <td>Waktu Ujian</td>
-                                    <td>{!! Form::date('test_schedule', $pmb->test_schedule, ['class'=>'form-control']) !!}</td>
+                                    <td>
+                                        {!! Form::text('test_schedule', $pmb->test_schedule, ['class'=>'form-control','id'=>'datetimepicker']) !!}
+                                        {{-- <input name="test_schedule" id="datetimepicker" type="text" > --}}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td width="160">Ruangan</td>
@@ -63,7 +66,12 @@
 
 @push('js')
     <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <script src="{{asset('datetimepicker/build/jquery.datetimepicker.full.min.js')}}"></script>
     <script>
-        CKEDITOR.replace( 'description' );
+        // CKEDITOR.replace( 'description' );
+        $('#datetimepicker').datetimepicker();
 </script>
+@endpush
+@push('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('datetimepicker/build/jquery.datetimepicker.min.css')}}"/ >
 @endpush

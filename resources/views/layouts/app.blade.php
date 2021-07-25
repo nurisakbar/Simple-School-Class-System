@@ -43,15 +43,18 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="/my-schedule"><i class="fa fa-calendar" aria-hidden="true"></i> My Teaching Schedule</a>
                                 </li>
+                                @if(Auth::guard('teacher')->user()->studentClass!=null)
                                 <li class="nav-item">
                                     <a class="nav-link" href="/home-room-teacher?semester=1"><i class="fa fa-calendar" aria-hidden="true"></i> Wali Kelas</a>
                                 </li>
-                                <li class="nav-item">
+                                @endif
+
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" href="/material"><i class="fa fa-book" aria-hidden="true"></i> Manage Material</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/task"> <i class="fa fa-tasks" aria-hidden="true"></i> Manage Task</a>
-                                </li>
+                                </li> --}}
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             <i class="fa fa-user-circle" aria-hidden="true"></i>{{ Auth::guard('teacher')->user()->name }}
@@ -124,7 +127,7 @@
             
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/manage-pmb"><i class="fa fa-users" aria-hidden="true"></i> PMB</a>
+                                    <a class="nav-link" href="/manage-pmb"><i class="fa fa-users" aria-hidden="true"></i> PSB</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/payment"><i class="fa fa-money" aria-hidden="true"></i> @lang('menu.manage_payment')</a>
@@ -185,7 +188,7 @@
           <span class="text-muted ">Simple School Class System | Build With love From Bandung, Indonesia.</span>
         </div>
       </footer>
-    {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     @stack('js')
 </body>
 </html>

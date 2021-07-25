@@ -20,7 +20,7 @@ class StudentController extends Controller
     {
         $this->middleware('auth', ['except'=>['dashboard']]);
         $this->religion = ['Islam','Kristen','Budha','Konghuchu'];
-        $this->education = ['SD','SMP','SMA'];
+        $this->education = ['SD','SMP','SMA','S1','S2','S3'];
         $this->workKind = ['Karyawan Swasta','Lain nya'];
     }
     /**

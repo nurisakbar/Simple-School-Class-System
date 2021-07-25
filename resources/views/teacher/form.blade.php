@@ -22,7 +22,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label>Email</label>
-            {!! Form::email('email', null, ['class'=>'form-control','placeholder'=>'Student Email']) !!}
+            {!! Form::email('email', null, ['class'=>'form-control','placeholder'=>'Teacher Email']) !!}
             @if($errors->has('email'))
                 <small id="emailHelp" class="form-text text-muted">{{ $errors->first('email') }}</small>
             @endif

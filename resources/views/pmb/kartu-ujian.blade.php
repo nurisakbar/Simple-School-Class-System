@@ -11,7 +11,7 @@
 <hr>
 <div class="container">
     <div class="half" style="float: left;margin-right:20px;">
-        <img width="50" src="https://2.bp.blogspot.com/-DOIsRcSUX5E/VxuPo9iYEyI/AAAAAAAAW_Q/x6_cRKiKG80gOIQ6-3rLFtTcaGyTiYXEwCLcB/s1600/Logo%2BOSIS%2BSD.png">
+        <img width="50" src="logo.jpeg">
     </div>
     <div class="half" style="text-align: center">
         KARTU UJIAN MASUK SEKOLAH<br>

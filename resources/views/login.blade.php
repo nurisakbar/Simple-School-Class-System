@@ -14,7 +14,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right"><span class="credentials"></span></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -44,7 +44,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">Level</label>
 
                             <div class="col-md-6">
-                                {!! Form::select('level', ['admin'=>'Administrator','teacher'=>'Guru','student'=>'Siswa'], null, ['class'=>'form-control']) !!}
+                                {!! Form::select('level', ['admin'=>'Administrator','teacher'=>'Guru','student'=>'Siswa'], null, ['class'=>'form-control level','onChange'=>'checkLevel()']) !!}
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -86,3 +86,24 @@
     </div>
 </div>
 @endsection
+
+@push('js')
+<script>
+    $(document).ready(function(){
+        checkLevel();
+    });
+</script>
+
+<script>
+    function checkLevel(){
+        var level = $(".level").val();
+        console.log(level);
+        if(level!='student')
+        {
+            $(".credentials").text('E-Mail Address');
+        }else{
+            $(".credentials").text('NIS');
+        }
+    }
+</script>
+@endpush
