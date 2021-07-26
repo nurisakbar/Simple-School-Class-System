@@ -14,12 +14,15 @@ class AuthController extends Controller
 
     public function loginAct(Request $request)
     {
+        //
+
+
         $credentials = $request->only('email', 'password');
         if ($request->level=='admin' && Auth::attempt($credentials)) {
             return redirect()->intended('/');
         } elseif ($request->level=='teacher' && Auth::guard('teacher')->attempt($credentials)) {
             return redirect('my-schedule');
-        } elseif ($request->level=='student' && Auth::guard('student')->attempt($credentials)) {
+        } elseif ($request->level=='student' && Auth::guard('student')->attempt(['student_id'=>$request->email,'password'=>$request->password])) {
             return redirect('student-dashboard');
         }
 

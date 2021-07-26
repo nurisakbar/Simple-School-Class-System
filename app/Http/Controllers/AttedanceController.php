@@ -10,7 +10,7 @@ class AttedanceController extends Controller
 {
     public $jumlahKehadiran = 10;
 
-    public $attedanceStatus = ['HADIR'=>'HADIR','IZIN'=>'IZIN','SAKIT'=>'SAKIT'];
+    public $attedanceStatus = ['HADIR'=>'HADIR','IZIN'=>'IZIN','SAKIT'=>'SAKIT','ALPA'=>'ALPA'];
 
 
     public function index($scheduleId)

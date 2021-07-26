@@ -10,4 +10,10 @@ class ExamResult extends Model
     use HasFactory;
 
     protected $fillable=['spiritual_attitude','social_attitude','height','weight','semester','student_id','suggestion','extra_curiculer'];
+
+
+    public function getExtraCuriculerAttribute($value)
+    {
+        return unserialize($value);
+    }
 }

@@ -21,7 +21,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>NIK</th>
+                                    <th>NIS</th>
                                     <th>{{$student->student_id}}</th>
                                 </tr>
                                 <tr>

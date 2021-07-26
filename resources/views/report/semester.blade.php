@@ -13,7 +13,7 @@
 <p style="text-align: center">RAPOR DAN PROFIL PESERTA DIDIK</p>
 <table>
     <tr>
-        <td>Nama Peserta didik</td>
+        <td>Nama Siswa</td>
         <td>:</td>
         <td>{{$student->name}}</td>
         <td>Kelas</td>
@@ -94,11 +94,21 @@
 </table>
 
 <p>C. Ekstra Kurikuler</p>
-<tr>
-    <th>No</th>
-    <th>Kegiatan Ekstra Kurikuler</th>
-    <th>Keterangan</th>
-</tr>
+<table class="table table-bordered">
+    <tr>
+        <td>No</td>
+        <td>Kegiatan Ekstra Kurikuler</td>
+        <td>Keterangan</td>
+    </tr>
+    @foreach($extraCuriculer as $extra)
+    <tr>
+        <td>{{ $loop->iteration }}</td>
+        <td>{{$extra}}</td>
+        <td>{{$examResult->extra_curiculer[$loop->iteration-1]}}</td>
+    </tr>
+    @endforeach
+</table>
+
 
 
 <p>D. Saran - saran</p>
@@ -130,27 +140,28 @@
     <tr>
         <td>1</td>
         <td>Sakit</td>
-        <td></td>
+        <td>{{countAttedance($student->id, 'SAKIT')}}</td>
     </tr>
     <tr>
         <td>2</td>
-        <td>Ijin</td>
-        <td></td>
+        <td>Izin</td>
+        <td>{{countAttedance($student->id, 'IZIN')}}</td>
     </tr>
     <tr>
         <td>3</td>
         <td>Tanpa Keterangan</td>
-        <td></td>
+        <td>{{countAttedance($student->id, 'ALPA')}}</td>
     </tr>
 </table>
 <div style="margin-top:40px;"></div>
-<div style="width:40%;border:1px solid black;">
+
+<div style="width:40%">
     Mengetahui<br>
 Orang Tua/ Wali
 <br><br><br><br><br><br><br><br>
 .............................
 </div>
-<div style="width:40%;border:1px solid black;float:right">
+<div style="width:40%;float:right;margin-top:-300px">
 Bandung, {{date('d  M Y')}}<br>
 Guru Kelas
 <br><br><br><br><br><br><br><br>

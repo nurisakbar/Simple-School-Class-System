@@ -20,3 +20,12 @@ function getAttendance($studentId, $scheduleId, $meetTo)
                 ->first();
     return $attedance->status??'-';
 }
+
+
+function countAttedance($studentId, $status)
+{
+    return \DB::table('attedances')
+    ->where('student_id', $studentId)
+    ->where('status', $status)
+    ->count();
+}
