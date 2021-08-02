@@ -5,7 +5,7 @@
         <h2>FORMULIR PENERIMAAN PESERTA DIDIK BARU TAHUN 2021</h2>
         <hr>
         @if(isset($pmb))
-            {!! Form::model($pmb,['url'=>'pmb/register']) !!}
+            {!! Form::model($pmb,['url'=>'pmb/register','files'=>true]) !!}
             
             @if($pmb->proof_of_payment==null and $pmb->payment_status==null)
                 <div class="alert alert-success" role="alert">

@@ -62,42 +62,44 @@
                                     </td>
                                 </tr>
 
+                                
+
                                 @if(isset($examResult->extra_curiculer))
                                 <?php 
                                 $extraIndex=0;
-                                $extraResult = unserialize($examResult->extra_curiculer);
+                                $extraResult = $examResult->extra_curiculer;
                                 ?>
-                                <tr>
-                                    <td>Extra Kurikuler</td>
-                                    <td>
-                                        <div class="row">
-                                            @foreach($extraCuriculer as $extra)
-                                            <div class="col-md-3 text-left">{{$extra}} : </div>
-                                            <div class="col-md-4"> 
-                                                {{ Form::hidden('extra_curiculer_name[]',$extra)}}
-                                                {{Form::text('extra_curiculer_value[]',$extraResult[$extraIndex]??0,['class'=>'form-control','style'=>'margin-bottom:10px'])}}</div>
-                                            <div class="col-md-5"></div>
-                                            <?php $extraIndex++;?>
-                                            @endforeach
-                                        </div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>Extra Kurikuler</td>
+                                        <td>
+                                            <div class="row">
+                                                @foreach($extraCuriculer as $extra)
+                                                <div class="col-md-3 text-left">{{$extra}} : </div>
+                                                <div class="col-md-4"> 
+                                                    {{ Form::hidden('extra_curiculer_name[]',$extra)}}
+                                                    {{Form::text('extra_curiculer_value[]',$extraResult[$extraIndex]??0,['class'=>'form-control','required'=>'required','style'=>'margin-bottom:10px'])}}</div>
+                                                <div class="col-md-5"></div>
+                                                <?php $extraIndex++;?>
+                                                @endforeach
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @else
-                                <tr>
-                                    <td>Extra Kurikuler</td>
-                                    <td>
-                                        <div class="row">
-                                            @foreach($extraCuriculer as $extra)
-                                            <div class="col-md-3 text-left">{{$extra}} : </div>
-                                            <div class="col-md-4"> 
-                                                {{ Form::hidden('extra_curiculer_name[]',$extra)}}
-                                                {{Form::text('extra_curiculer_value[]',null,['class'=>'form-control','style'=>'margin-bottom:10px'])}}</div>
-                                            <div class="col-md-5"></div>
-                                            
-                                            @endforeach
-                                        </div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>Extra Kurikuler</td>
+                                        <td>
+                                            <div class="row">
+                                                @foreach($extraCuriculer as $extra)
+                                                <div class="col-md-3 text-left">{{$extra}} : </div>
+                                                <div class="col-md-4"> 
+                                                    {{ Form::hidden('extra_curiculer_name[]',$extra)}}
+                                                    {{Form::text('extra_curiculer_value[]',null,['class'=>'form-control','required'=>'required','style'=>'margin-bottom:10px'])}}</div>
+                                                <div class="col-md-5"></div>
+                                                
+                                                @endforeach
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endif
                                 <tr>
                                     <td>Semester</td>

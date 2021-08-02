@@ -45,6 +45,7 @@
                     </table>
                     {!! Form::close() !!}
                     <hr>
+   
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>

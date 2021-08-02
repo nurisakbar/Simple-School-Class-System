@@ -25,12 +25,19 @@
     <div class="biodata">
         <table>
             <tr>
-                <td width="120">Nama</td>
+                <td rowspan="7">
+                    <img src="/pmb/{{$pmb->photo}}" width="60">
+                </td>
+                <td width="80">Nama</td>
                 <td> : {{$pmb->name}}</td>
             </tr>
             <tr>
-                <td>Tempat, Tanggal Lahir</td>
-                <td> : {{$pmb->birth_place}}, {{$pmb->birth_date}}</td>
+                <td>Tempat Lahir</td>
+                <td> : {{$pmb->birth_place}}</td>
+            </tr>
+            <tr>
+                <td>Tanggal Lahir</td>
+                <td>{{$pmb->birth_date}}</td>
             </tr>
             <tr>
                 <td>Jenis Kelamin</td>
@@ -38,7 +45,11 @@
             </tr>
             <tr>
                 <td>Tanggal Ujian</td>
-                <td>: {{$pmb->test_schedule}}</td>
+                <td>: {{substr($pmb->test_schedule,0,10)}}</td>
+            </tr>
+            <tr>
+                <td>Jam Ujian</td>
+                <td>: {{substr($pmb->test_schedule,10,6)}}</td>
             </tr>
             <tr>
                 <td>Ruangan</td>

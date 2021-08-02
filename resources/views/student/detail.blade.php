@@ -10,17 +10,22 @@
                 <div class="card-body">
                     
                     <table class="table table-bordered">
+                        
                         <tr>
-                            <td rowspan="3" width="200"><img src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg" class="img-thumbnail" width="200"></td>
-                            <td>Name</td>
+                        <td rowspan="4" width="200"><img src="{{$student->photo==null?'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg':'/student_photo/'.$student->photo}}" class="img-thumbnail" width="200"></td>
+                            <td>Nama Lengkap</td>
                             <td>{{$student->name}}</td>
+                        </tr>
+                        <tr>
+                            <td>NIS</td>
+                            <td>{{$student->student_id}}</td>
                         </tr>
                         <tr>
                             <td>Email</td>
                             <td>{{$student->email}}</td>
                         </tr>
                         <tr>
-                            <td>Class</td>
+                            <td>Kelas</td>
                             <td>{{$student->class->name}}</td>
                         </tr>
                     </table>

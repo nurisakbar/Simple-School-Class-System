@@ -5,13 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Teacher Detail</div>
+                <div class="card-header">Detail Guru</div>
 
                 <div class="card-body">
                     <table class="table table-bordered">
                         <tr>
                             <td rowspan="3" width="200"><img src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg" class="img-thumbnail" width="200"></td>
-                            <td>Name</td>
+                            <td>Nama</td>
                             <td>{{$teacher->name}}</td>
                         </tr>
                         <tr>
@@ -35,10 +35,10 @@
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>Teaching Time</th>
-                                <th>Course</th>
-                                <th>Class Name</th>
-                                <th>Class Room</th>
+                                <th>Jadwal Mengajar</th>
+                                <th>Mata Pelajaran</th>
+                                <th>Nama Kelas</th>
+                                <th>Ruangan</th>
                                 <th width="190">Action</th>
                             </tr>
                         </thead>

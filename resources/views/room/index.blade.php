@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','List room')
+@section('title','Kelola Ruangan')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +8,7 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    <a href="{{route('room.create')}}" class="btn btn-primary">Create New room</a>
+                    <a href="{{route('room.create')}}" class="btn btn-primary">Tambah RUangan</a>
                     <hr>
       
                     @include('alert')
@@ -16,7 +16,7 @@
                         <thead>
                             <tr>
                                 <th width="10">No</th>
-                                <th>Name</th>
+                                <th>Nama Ruangan</th>
                                 <th width="120"></th>
                             </tr>
                         </thead>

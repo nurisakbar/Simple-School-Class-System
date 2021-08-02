@@ -22,6 +22,9 @@ class ReportController extends Controller
         $data['students']       = $data['teacher']->studentClass->student->pluck('name', 'student_id');
         $data['student']        = Student::where('student_id', $_GET['student_id'])->first();
         $data['examResult']     = ExamResult::where('student_id', $data['student']->id)->first();
+        if ($data['examResult']==null) {
+            return redirect('home-room-teacher?semester=1')->with('message', 'Silahkan Input Data Hasil Ujian Dulu');
+        }
         $data['extraCuriculer'] = $this->extraCuriculer;
         $data['testScores']     = TestScores::where('semester', $_GET['semester'])->where('student_id', $student->id)->get();
         if ($_GET['type']=='pdf') {

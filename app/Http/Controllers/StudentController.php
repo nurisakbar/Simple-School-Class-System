@@ -58,6 +58,12 @@ class StudentController extends Controller
     {
         $input = $request->all();
         $input['password'] = Hash::make($request->password);
+        if ($request->hasFile('photo')) {
+            $file       = $request->file('photo');
+            $nama_file  = str_replace(' ', '_', $file->getClientOriginalName());
+            $file->move('student_photo', $nama_file);
+            $input['photo'] = $nama_file;
+        }
         Student::create($input);
         return redirect('student')->with('message', 'A Student has been created successfull!');
     }

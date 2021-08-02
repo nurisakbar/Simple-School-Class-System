@@ -8,7 +8,7 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    {!! Form::model($pmb,['url'=>'pmb/'.$pmb->id,'method'=>'put']) !!}
+                    {!! Form::model($pmb,['url'=>'pmb/'.$pmb->id,'method'=>'put','files'=>true]) !!}
                     <input type="hidden" name="page" value="pmb/{{$pmb->id}}">
                     <div class="row">
                         <div class="col-md-8">

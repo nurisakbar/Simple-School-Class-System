@@ -8,8 +8,8 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    Hello {{Auth::guard('student')->user()->name}}, You Are Login As Student
-                    <hr>
+                    {{-- Hello {{Auth::guard('student')->user()->name}}, You Are Login As Student
+                    <hr> --}}
                     @include('student.profile')
 
                     @if($tab=='nilai')
@@ -45,7 +45,7 @@
                         <table class="table table-bordered" id="tabel-data">
                             <thead>
                                 <tr>
-                                    <th>Jam</th>
+                                    <th>Jam Pelajaran</th>
                                     <th>Mata Pelajaran</th>
                                     <th>Nama Guru</th>
                                     <th>Ruangan</th>

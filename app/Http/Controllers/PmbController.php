@@ -45,7 +45,14 @@ class PmbController extends Controller
             $pmb->save();
             return redirect('pmb/register');
         } else {
-            $pmb = Pmb::create($request->all());
+            $input = $request->all();
+            if ($request->hasFile('photo')) {
+                $file       = $request->file('photo');
+                $nama_file  = str_replace(' ', '_', $file->getClientOriginalName());
+                $file->move('pmb', $nama_file);
+                $input['photo'] = $nama_file;
+            }
+            $pmb = Pmb::create($input);
             session(['pmb_id'=>$pmb->id]);
             session(['pmb_name'=> $request->name]);
             return redirect('pmb/register')->with('message', 'Selamat '.$request->name.', Pendaftaran Anda Berhasil');
@@ -80,7 +87,14 @@ class PmbController extends Controller
     public function update($id, Request $request)
     {
         $pmb = Pmb::find($id);
-        $pmb->update($request->all());
+        $input = $request->all();
+        if ($request->hasFile('photo')) {
+            $file       = $request->file('photo');
+            $nama_file  = str_replace(' ', '_', $file->getClientOriginalName());
+            $file->move('pmb', $nama_file);
+            $input['photo'] = $nama_file;
+        }
+        $pmb->update($input);
         return redirect($request->page);
     }
 
@@ -104,7 +118,8 @@ class PmbController extends Controller
             return redirect('pmb/login');
         }
         $data['pmb'] = Pmb::where('id', session('pmb_id'))->first();
-        $pdf = \PDF::loadView('pmb.kartu-ujian', $data);
+        //return view('pmb.kartu-ujian', $data);
+        $pdf = \PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('pmb.kartu-ujian', $data);
         $customPaper = array(0,0,360,360);
         $pdf->setPaper($customPaper);
         return $pdf->stream('kartu');

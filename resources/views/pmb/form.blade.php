@@ -47,7 +47,14 @@
     </tr>
     <tr>
         <td>No HP</td>
-        <td>{!! Form::text('phone', null, ['class'=>'form-control','placeholder'=>'Nomor HP']) !!}</td>                    
+        <td>{!! Form::text('phone', null, ['class'=>'form-control','placeholder'=>'Nomor HP']) !!}</td>
+    </tr>
+    <tr>
+        <td>Photo</td>
+        <td>
+            <input type="file" name="photo">
+        </td>
+    </tr>                    
     @if($page!='show')
     <tr>
         <td></td>

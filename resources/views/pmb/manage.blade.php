@@ -27,7 +27,7 @@
                                 <td>{{$pmb->kk}}</td>
                                 <td>{{$pmb->name}}</td>
                                 <td>{{$pmb->phone}}</td>
-                                <td>{{$pmb->payment_status??'Belum Bayar'}}</td>
+                                <td>{{$pmb->payment_status==1?'Sudah Bayar':'Belum Bayar'}}</td>
                                 <td>
                                     <a href="/pmb/{{$pmb->id}}" class="btn btn-primary" style="float:left;margin-right:10px;">Detail</a>
                                 </td>

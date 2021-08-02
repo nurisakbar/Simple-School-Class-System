@@ -62,6 +62,26 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Email</label>
+                    {!! Form::email('email', null, ['class'=>'form-control','placeholder'=>'Email Siswa']) !!}
+                    @if($errors->has('email'))
+                        <small id="emailHelp" class="form-text text-muted">{{ $errors->first('email') }}</small>
+                    @endif
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Password</label>
+                    {!! Form::password('password', ['class'=>'form-control','placeholder'=>'Password']) !!}
+                    @if($errors->has('password'))
+                        <small id="emailHelp" class="form-text text-muted">{{ $errors->first('password') }}</small>
+                    @endif
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-md-6">
         <div class="row">
@@ -97,35 +117,27 @@
             <div class="col-md-8">
                 <div class="form-group">
                     <label>Address</label>
-                    {!! Form::text('address', null, ['class'=>'form-control','placeholder'=>'Student Address']) !!}
+                    {!! Form::text('address', null, ['class'=>'form-control','placeholder'=>'Alamat']) !!}
                     @if($errors->has('address'))
                         <small id="emailHelp" class="form-text text-muted">{{ $errors->first('address') }}</small>
                     @endif
                 </div>
             </div>
         </div>
-        {{-- <div class="row">
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Nama Siswa</label>
-                    {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Student Name']) !!}
-                    @if($errors->has('name'))
-                        <small id="emailHelp" class="form-text text-muted">{{ $errors->first('name') }}</small>
-                    @endif
+                    <label>Upload Photo</label>
+                    <input type="file" name="photo">
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>NIK</label>
-                    {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Student Name']) !!}
-                    @if($errors->has('name'))
-                        <small id="emailHelp" class="form-text text-muted">{{ $errors->first('name') }}</small>
-                    @endif
-                </div>
-            </div>
-        </div> --}}
+        </div>
+
+
+
     </div>
 </div>
+<hr>
 
 <div class="row">
     <div class="col-md-6"  style="border-right:1px dashed black;">
@@ -238,26 +250,7 @@
 
 
 
-<div class="row">
-    <div class="col-md-6">
-        <div class="form-group">
-            <label>Email</label>
-            {!! Form::email('email', null, ['class'=>'form-control','placeholder'=>'Student Email']) !!}
-            @if($errors->has('email'))
-                <small id="emailHelp" class="form-text text-muted">{{ $errors->first('email') }}</small>
-            @endif
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group">
-            <label>Password</label>
-            {!! Form::password('password', ['class'=>'form-control','placeholder'=>'Password']) !!}
-            @if($errors->has('password'))
-                <small id="emailHelp" class="form-text text-muted">{{ $errors->first('password') }}</small>
-            @endif
-        </div>
-    </div>
-</div>
+
 <div class="form-group">
     <button type="submit" class="btn btn-primary">Submit</button>
     <a href="{{ route('student.index') }}" class="btn btn-primary">Back</a>
