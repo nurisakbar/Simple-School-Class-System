@@ -11,11 +11,12 @@
 <hr>
 <div class="container">
     <div class="half" style="float: left;margin-right:20px;">
-        <img width="50" src="logo.jpeg">
+        <img width="50" src="{{URL::to('/logo.jpeg')}}">
     </div>
     <div class="half" style="text-align: center">
+        
         KARTU UJIAN MASUK SEKOLAH<br>
-        Sekolah Dasar Persis <br>Kota Bandung<br>
+        SDIT PERSIS CIGANITRI <br>Jl. Ciganitri No.2, Cipagalo, Kec. Bojongsoang, Bandung<br>
     </div>
 </div>
 <hr>
@@ -26,7 +27,7 @@
         <table>
             <tr>
                 <td rowspan="7">
-                    <img src="/pmb/{{$pmb->photo}}" width="60">
+                    <img src="{{URL::to('/pmb/'.$pmb->photo)}}" width="60">
                 </td>
                 <td width="80">Nama</td>
                 <td> : {{$pmb->name}}</td>
@@ -37,7 +38,7 @@
             </tr>
             <tr>
                 <td>Tanggal Lahir</td>
-                <td>{{$pmb->birth_date}}</td>
+                <td>: {{$pmb->birth_date}}</td>
             </tr>
             <tr>
                 <td>Jenis Kelamin</td>

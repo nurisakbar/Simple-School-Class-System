@@ -11,39 +11,39 @@
     }
     </style>
 <p style="text-align: center">RAPOR DAN PROFIL PESERTA DIDIK</p>
-<table>
+<table >
     <tr>
-        <td>Nama Siswa</td>
-        <td>:</td>
-        <td>{{$student->name}}</td>
-        <td>Kelas</td>
-        <td>:</td>
-        <td>II (Dua)</td>
+        <td style="border-color: white;">Nama Siswa</td>
+        <td style="border-color: white;">:</td>
+        <td style="border-color: white;">{{$student->name}}</td>
+        <td style="border-color: white;">Kelas</td>
+        <td style="border-color: white;">:</td>
+        <td style="border-color: white;">II (Dua)</td>
+    </tr>
+    <tr style="border-color: white;">
+        <td style="border-color: white;">NIS</td>
+        <td style="border-color: white;">:</td>
+        <td style="border-color: white;">{{$student->student_id}}</td>
+        <td style="border-color: white;">Semester</td>
+        <td style="border-color: white;">:</td>
+        <td style="border-color: white;">Ganjil</td>
     </tr>
     <tr>
-        <td>NIS</td>
-        <td>:</td>
-        <td>{{$student->student_id}}</td>
-        <td>Semester</td>
-        <td>:</td>
-        <td>Ganjil</td>
+        <td style="border-color: white;">Nama Sekolah</td>
+        <td style="border-color: white;">:</td>
+        <td style="border-color: white;">SD ISLAM TERPADU PERSIS</td>
+        <td style="border-color: white;">Tahun Pelajaran</td>
+        <td style="border-color: white;">:</td>
+        <td style="border-color: white;">2020/2021</td>
     </tr>
     <tr>
-        <td>Nama Sekolah</td>
-        <td>:</td>
-        <td>SD ISLAM TERPADU PERSIS</td>
-        <td>Tahun Pelajaran</td>
-        <td>:</td>
-        <td>2020/2021</td>
-    </tr>
-    <tr>
-        <td>Alamat Sekolah</td>
-        <td>:</td>
-        <td>Jln. Ciganitri No. 2 Desa Cipagalo, Kec
+        <td style="border-color: white;">Alamat Sekolah</td>
+        <td style="border-color: white;">:</td>
+        <td style="border-color: white;">Jln. Ciganitri No. 2 Desa Cipagalo, Kec
             Bojongsoang, Kab Bandung</td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td style="border-color: white;"></td>
+        <td style="border-color: white;"></td>
+        <td style="border-color: white;"></td>
     </tr>
 </table>
 

@@ -49,17 +49,26 @@
         <td>No HP</td>
         <td>{!! Form::text('phone', null, ['class'=>'form-control','placeholder'=>'Nomor HP']) !!}</td>
     </tr>
+    @if(isset($pmb)) 
+    <tr>
+        <td></td>
+        <td>
+            
+            <img src="/pmb/{{ $pmb->photo}}" width="200">
+        </td>
+    </tr>         
+    @endif  
+    @if($page!='show')
     <tr>
         <td>Photo</td>
         <td>
             <input type="file" name="photo">
         </td>
-    </tr>                    
-    @if($page!='show')
+    </tr>        
     <tr>
         <td></td>
         <td>
-            <button type="submit" class="btn btn-info">Daftar</button>
+            <button type="submit" class="btn btn-info">{{session('pmb_id')==null?'Daftar':'Update'}}</button>
         </td>
     </tr>
     @endif

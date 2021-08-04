@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','List course')
+@section('title','Mata Pelajaran')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,7 +8,7 @@
                 <div class="card-header">@yield('title')</div>
 
                 <div class="card-body">
-                    <a href="{{route('course.create')}}" class="btn btn-primary">Create New course</a>
+                    <a href="{{route('course.create')}}" class="btn btn-primary">Tambah Mata Pelajaran</a>
                     <hr>
       
                     @include('alert')

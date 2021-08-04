@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label>Teacher Name</label>
-            {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Student Name']) !!}
+            {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Nama Lengkap']) !!}
             @if($errors->has('name'))
                 <small id="emailHelp" class="form-text text-muted">{{ $errors->first('name') }}</small>
             @endif
@@ -11,7 +11,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label>Teacher Phone</label>
-            {!! Form::text('phone', null, ['class'=>'form-control','placeholder'=>'Student Phone']) !!}
+            {!! Form::text('phone', null, ['class'=>'form-control','placeholder'=>'Telpon']) !!}
             @if($errors->has('phone'))
                 <small id="emailHelp" class="form-text text-muted">{{ $errors->first('phone') }}</small>
             @endif
@@ -22,7 +22,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label>Email</label>
-            {!! Form::email('email', null, ['class'=>'form-control','placeholder'=>'Teacher Email']) !!}
+            {!! Form::email('email', null, ['class'=>'form-control','placeholder'=>'Email']) !!}
             @if($errors->has('email'))
                 <small id="emailHelp" class="form-text text-muted">{{ $errors->first('email') }}</small>
             @endif

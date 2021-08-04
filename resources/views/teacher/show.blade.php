@@ -8,9 +8,11 @@
                 <div class="card-header">Detail Guru</div>
 
                 <div class="card-body">
+                    {!! Form::open(['route'=>['teacher.update',$teacher->id],'files'=>true,'method'=>'PUT']) !!}
+                    {!! Form::hidden('redirect', 'my-schedule') !!}
                     <table class="table table-bordered">
                         <tr>
-                            <td rowspan="3" width="200"><img src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg" class="img-thumbnail" width="200"></td>
+                        <td rowspan="5" width="200"><img src="{{$teacher->photo==null?'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg':'student_photo/'.$teacher->photo}}" class="img-thumbnail" width="200"></td>
                             <td>Nama</td>
                             <td>{{$teacher->name}}</td>
                         </tr>
@@ -22,7 +24,18 @@
                             <td>Phone</td>
                             <td>{{$teacher->phone}}</td>
                         </tr>
+                        <tr>
+                            <td>Photo</td>
+                            <td>
+                                <input type="file" name="photo">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button type="submit" class="btn btn-primary">Update</button></td>
+                        </tr>
                     </table>
+                    {!! Form::close() !!}
 
                     @include('alert')
 

@@ -52,10 +52,18 @@ class PmbController extends Controller
                 $file->move('pmb', $nama_file);
                 $input['photo'] = $nama_file;
             }
-            $pmb = Pmb::create($input);
-            session(['pmb_id'=>$pmb->id]);
-            session(['pmb_name'=> $request->name]);
-            return redirect('pmb/register')->with('message', 'Selamat '.$request->name.', Pendaftaran Anda Berhasil');
+            $exist = Pmb::where('nik', $request->nik)->first();
+            if ($exist==null) {
+                $pmb = Pmb::create($input);
+                session(['pmb_id'=>$pmb->id]);
+                session(['pmb_name'=> $request->name]);
+                $message = 'Selamat '.$request->name.', Pendaftaran Anda Berhasil';
+            } else {
+                $exist->update($input);
+                $message = " update data berhasil";
+            }
+            
+            return redirect('pmb/register')->with('message', $message);
         }
     }
 

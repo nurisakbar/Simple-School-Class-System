@@ -18,7 +18,7 @@ class StudentController extends Controller
     public $workKind;
     public function __construct()
     {
-        $this->middleware('auth', ['except'=>['dashboard']]);
+        $this->middleware('auth', ['except'=>['dashboard','update']]);
         $this->religion = ['Islam','Kristen','Budha','Konghuchu'];
         $this->education = ['SD','SMP','SMA','S1','S2','S3'];
         $this->workKind = ['Karyawan Swasta','Lain nya'];
@@ -115,7 +115,19 @@ class StudentController extends Controller
             $input['password'] = $student->password;
         }
 
+        if ($request->has('photo')) {
+            $file       = $request->file('photo');
+            $nama_file  = str_replace(' ', '_', $file->getClientOriginalName());
+            $file->move('student_photo', $nama_file);
+            $input['photo'] = $nama_file;
+        }
         $student->update($input);
+        if ($request->has('redirect')) {
+            return redirect('student-dashboard')->with('message', 'Upload Photo Berhasil');
+        }
+
+
+        
         return redirect('student')->with('message', 'A Student With Name '.$student->name.' Has Updated');
     }
 

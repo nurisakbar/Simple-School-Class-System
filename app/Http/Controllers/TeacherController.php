@@ -26,7 +26,7 @@ class TeacherController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['except'=>['teacherSchedule','homeRoomTeacher']]);
+        $this->middleware('auth', ['except'=>['teacherSchedule','homeRoomTeacher','update']]);
         $this->teachingTime = ['08:00 - 10:00','10:00 - 12:00','13:00 - 15:00'];
         //$this->day = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
         $this->day = ['Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
@@ -109,8 +109,17 @@ class TeacherController extends Controller
         } else {
             $input['password'] = $teacher->password;
         }
+        if ($request->has('photo')) {
+            $file       = $request->file('photo');
+            $nama_file  = str_replace(' ', '_', $file->getClientOriginalName());
+            $file->move('student_photo', $nama_file);
+            $input['photo'] = $nama_file;
+        }
 
         $teacher->update($input);
+        if ($request->has('redirect')=='my-schedule') {
+            return redirect('my-schedule')->with('message', 'Upload Foto Berhasil');
+        }
         return redirect('teacher')->with('message', 'A Teacher With Name '.$teacher->name.' Has Updated');
     }
 
