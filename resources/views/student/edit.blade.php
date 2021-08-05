@@ -8,7 +8,7 @@
                 <div class="card-header">Edit Data Siswa</div>
 
                 <div class="card-body">
-                    {!! Form::model($student,['route'=>['student.update',$student->id],'method'=>'PUT']) !!}
+                    {!! Form::model($student,['route'=>['student.update',$student->id],'files'=>true,'method'=>'PUT']) !!}
                     
                     @include('student.form')
 
