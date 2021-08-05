@@ -27,7 +27,7 @@
         <table>
             <tr>
                 <td rowspan="7" width="132">
-                    <img src="{{URL::to('/pmb/'.$pmb->photo)}}" width="130">
+                    <img src="{{URL::to('/pmb/'.$pmb->photo)}}" width="140">
                 </td>
                 <td width="80">Nama</td>
                 <td> : {{$pmb->name}}</td>
