@@ -30,7 +30,7 @@
                     <img style="text-align: center;" src="{{URL::to('/pmb/'.$pmb->photo)}}" width="145">
                 </td>
                 <td width="80">Nama</td>
-                <td> : {{$pmb->name}}</td>
+                <td width="100"> : {{$pmb->name}}</td>
             </tr>
             <tr>
                 <td>Tempat Lahir</td>
@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td>Tanggal Lahir</td>
-                <td>: {{ date("d m Y", strtotime($pmb->birth_date))}}</td>
+                <td>: {{ date("d-m-Y", strtotime($pmb->birth_date))}}</td>
             </tr>
             <tr>
                 <td>Jenis Kelamin</td>
@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td>Tanggal Ujian</td>
-                <td>: {{date("d m Y", strtotime($pmb->test_schedule))}}</td>
+                <td>: {{date("d-m-Y", strtotime($pmb->test_schedule))}}</td>
             </tr>
             <tr>
                 <td>Jam Ujian</td>
