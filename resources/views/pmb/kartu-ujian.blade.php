@@ -34,19 +34,11 @@
             </tr>
             <tr>
                 <td>Tempat Lahir</td>
-                <td> : 
-
-<?php
-// $date=date_create($pmb->birth_place);
-// echo date_format($date,"d m Y");
-
-echo date("d m Y", strtotime($pmb->birth_place));
-?>
-        </td>
+                <td> : {{$pmb->birth_place}}</td>
             </tr>
             <tr>
                 <td>Tanggal Lahir</td>
-                <td>: {{$pmb->birth_date}}</td>
+                <td>: echo date("d m Y", strtotime($pmb->birth_date));</td>
             </tr>
             <tr>
                 <td>Jenis Kelamin</td>
@@ -54,7 +46,7 @@ echo date("d m Y", strtotime($pmb->birth_place));
             </tr>
             <tr>
                 <td>Tanggal Ujian</td>
-                <td>: {{substr($pmb->test_schedule,0,10)}}</td>
+                <td>: {{date("d m Y", strtotime($pmb->test_schedule)}}</td>
             </tr>
             <tr>
                 <td>Jam Ujian</td>
