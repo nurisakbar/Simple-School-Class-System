@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <table class="table table-bordered">
                         <tr>
-                            <td rowspan="3" width="200"><img src="{{$teacher->photo==null?'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg':'student_photo/'.$teacher->photo}}" class="img-thumbnail" width="200"></td>
+                            <td rowspan="3" width="200"><img src="{{$teacher->photo==null?'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg':'/teacher_photo/'.$teacher->photo}}" class="img-thumbnail" width="200"></td>
                             <td>Name</td>
                             <td>{{$teacher->name}}</td>
                         </tr>
