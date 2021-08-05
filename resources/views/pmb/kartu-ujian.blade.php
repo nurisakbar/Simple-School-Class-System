@@ -37,9 +37,10 @@
                 <td> : 
 
 <?php
+// $date=date_create($pmb->birth_place);
+// echo date_format($date,"d m Y");
 
-
-echo date("d m Y", strtotime($date));
+echo date("d m Y", strtotime($pmb->birth_place));
 ?>
         </td>
             </tr>
