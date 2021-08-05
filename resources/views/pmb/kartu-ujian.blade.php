@@ -27,14 +27,20 @@
         <table>
             <tr>
                 <td rowspan="7">
-                    <img style="text-align: center;" src="{{URL::to('/pmb/'.$pmb->photo)}}" width="150">
+                    <img style="text-align: center;" src="{{URL::to('/pmb/'.$pmb->photo)}}" width="153">
                 </td>
                 <td width="80">Nama</td>
                 <td> : {{$pmb->name}}</td>
             </tr>
             <tr>
                 <td>Tempat Lahir</td>
-                <td> : {{$pmb->birth_place}}</td>
+                <td> : 
+
+<?php
+$date=date_create($pmb->birth_place);
+echo date_format($date,"d m Y");
+?>
+        </td>
             </tr>
             <tr>
                 <td>Tanggal Lahir</td>
