@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td>Tanggal Ujian</td>
-                <td>: {{date("d m Y", strtotime($pmb->test_schedule)}}</td>
+                <td>: {{date("d m Y", strtotime($pmb->test_schedule))}}</td>
             </tr>
             <tr>
                 <td>Jam Ujian</td>
