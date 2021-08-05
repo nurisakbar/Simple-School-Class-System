@@ -26,8 +26,8 @@
     <div class="biodata">
         <table>
             <tr>
-                <td rowspan="7" width="150">
-                    <img src="{{URL::to('/pmb/'.$pmb->photo)}}" width="150">
+                <td rowspan="7">
+                    <img style="text-align: center;" src="{{URL::to('/pmb/'.$pmb->photo)}}" width="150">
                 </td>
                 <td width="80">Nama</td>
                 <td> : {{$pmb->name}}</td>
