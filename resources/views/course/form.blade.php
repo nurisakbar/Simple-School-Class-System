@@ -1,6 +1,6 @@
 <div class="form-group">
     <label>Name course</label>
-    {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Name course']) !!}
+    {!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Nama Mata Pelajaran']) !!}
     @if($errors->has('name'))
         <small id="emailHelp" class="form-text text-danger">{{ $errors->first('name') }}</small>
     @endif
