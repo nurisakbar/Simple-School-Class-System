@@ -112,7 +112,7 @@ class TeacherController extends Controller
         if ($request->has('photo')) {
             $file       = $request->file('photo');
             $nama_file  = str_replace(' ', '_', $file->getClientOriginalName());
-            $file->move('student_photo', $nama_file);
+            $file->move('teacher_photo', $nama_file);
             $input['photo'] = $nama_file;
         }
 
