@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td>Tanggal Lahir</td>
-                <td>: echo date("d m Y", strtotime($pmb->birth_date));</td>
+                <td>: {{ date("d m Y", strtotime($pmb->birth_date))}}</td>
             </tr>
             <tr>
                 <td>Jenis Kelamin</td>
