@@ -16,9 +16,6 @@ class AddPhotoToStudentTeacher extends Migration
         Schema::table('teachers', function (Blueprint $table) {
             $table->text('photo')->nullable();
         });
-        Schema::table('students', function (Blueprint $table) {
-            $table->text('photo')->nullable();
-        });
     }
 
     /**
