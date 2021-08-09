@@ -18,7 +18,7 @@ class TestScoreController extends Controller
     {
         $schedule         = Schedule::findOrFail($id);
         $data['schedule'] = $schedule;
-        $data['students'] = Schedule::select('students.name', 'students.student_id', 'test_scores.knowledge_value', 'test_scores.skill_value', 'test_scores.semester')->leftJoin('students', 'students.student_class_id', 'schedules.student_class_id')
+        $data['students'] = Schedule::select('students.name', 'students.photo', 'students.student_id', 'students.student_id_second', 'test_scores.knowledge_value', 'test_scores.skill_value', 'test_scores.semester')->leftJoin('students', 'students.student_class_id', 'schedules.student_class_id')
         ->leftJoin('test_scores', function ($join) {
             $join->on('schedules.id', '=', 'test_scores.schedule_id')->on('students.id', 'test_scores.student_id')->where('test_scores.semester', 1);
         })->where('schedules.id', $id)->get();

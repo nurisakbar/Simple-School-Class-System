@@ -5,15 +5,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">List Student In Class {{$schedule->class->name}}</div>
+                <div class="card-header">Daftar Siswa Pada Kelas {{$schedule->class->name}}</div>
 
                 <div class="card-body">
                     <table class="table table-bordered">
                         <tr class="table-active">
-                            <th colspan="3">TEACHER INFO</th>
+                            <th colspan="3">Informasi Guru</th>
                         </tr>
                         <tr>
-                            <td rowspan="5" width="200"><img src="https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg" class="img-thumbnail" width="200"></td>
+                            <td rowspan="5" width="200"><img src="{{$schedule->teacher->photo==null?'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg':'/teacher_photo/'.$schedule->teacher->photo}}" class="img-thumbnail" width="200"></td>
                         </tr>
                         <tr>
                             <td width="200">Course</td>
