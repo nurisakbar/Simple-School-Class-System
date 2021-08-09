@@ -17,7 +17,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <img src="https://img.icons8.com/bubbles/2x/user-male.png" width="250">
+                                        <img src="{{$student->photo==null?'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg':'/student_photo/'.$student->photo}}" width="250">
                                     </td>
                                 </tr>
                                 <tr>
