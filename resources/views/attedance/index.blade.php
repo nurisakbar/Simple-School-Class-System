@@ -28,7 +28,7 @@
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>NIK</th>
+                                <th>NIS</th>
                                 <th>Nama Siswa</th>
                                 @for($i=1;$i<=$jumlahKehadiran;$i++)
                                 <th><a href="/attedance/{{ Request::segment(2) }}/edit?pertemuan_ke={{$i}}&id={{ Request::segment(2) }}">Ke-{{$i}}</a></th>

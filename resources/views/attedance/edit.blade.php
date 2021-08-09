@@ -46,7 +46,7 @@
                             <table class="table table-bordered" id="tabel-data">
                                 <thead>
                                     <tr>
-                                        <th>NIK</th>
+                                        <th>NIS</th>
                                         <th>Nama Siswa</th>
                                         <th>Status Kehadiran</th>
                                     </tr>
