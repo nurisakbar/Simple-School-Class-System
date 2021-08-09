@@ -8,7 +8,7 @@
     </tr>
     <tr>
         <td>NIS</td>
-        <td>{{Auth::guard('student')->user()->student_id}}</td>
+        <td>{{Auth::guard('student')->user()->student_id_second}}</td>
     </tr>
     <tr>
         <td>Kelas</td>
