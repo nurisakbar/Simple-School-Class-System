@@ -38,7 +38,7 @@
                         <tbody>
                             @foreach($schedule->class->student as $student)
                             <tr>
-                                <td>{{$student->student_id}}</td>
+                                <td>{{$student->student_id_second}}</td>
                                 <td>{{$student->name}}</td>
                                 @for($i=1;$i<=$jumlahKehadiran;$i++)
                                     <td>{{ getAttendance($student->id, Request::segment(2), $i) }}</td>

@@ -54,7 +54,7 @@
                                 <tbody>
                                     @foreach($schedule->class->student as $student)
                                     <tr>
-                                        <td>{{$student->student_id}}</td>
+                                        <td>{{$student->student_id_second}}</td>
                                         <td>{{$student->name}}</td>
                                         <td>{!! Form::select('', $attedanceStatus, null, ['class'=>'form-control','id'=>'student-'.$student->id,'onChange'=>'saveAttedance('.$student->id.')']) !!}</td>
                                     </tr>
