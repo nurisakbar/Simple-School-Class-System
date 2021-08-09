@@ -22,11 +22,13 @@
                                 </tr>
                                 <tr>
                                     <th>NIS</th>
-                                    <th>{{$student->student_id}}</th>
+                                    <th>{{$student->student_id_second}}</th>
                                 </tr>
                                 <tr>
                                     <th>Nama</th>
-                                    <th>{!! Form::select('student', $students, $student->student_id, ['id'=>'student','class'=>'form-control','onChange'=>'changeStudent()']) !!}</th>
+                                    {{-- <th>{!! Form::select('student', $students, $student->student_id, ['id'=>'student','class'=>'form-control','onChange'=>'changeStudent()']) !!}</th>
+                                     --}}
+                                     <th>{{$student->name}}</th>
                                 </tr>
                             </table>
                         </div>
