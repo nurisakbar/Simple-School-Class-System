@@ -127,6 +127,7 @@ class PmbController extends Controller
         }
         $data['pmb'] = Pmb::where('id', session('pmb_id'))->first();
         //return view('pmb.kartu-ujian', $data);
+        
         $pdf = \PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('pmb.kartu-ujian', $data);
         $customPaper = array(0,0,360,360);
         $pdf->setPaper($customPaper);

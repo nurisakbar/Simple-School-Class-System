@@ -149,10 +149,7 @@ class StudentController extends Controller
         $data['tab']        = $_GET['tab']??'jadwal';
         $student            = Auth::guard('student')->user();
         $data['student']    = $student;
-        $data['schedules']  = Schedule::with('course', 'teacher')->leftJoin('marks', function ($leftJoin) use ($student) {
-            $leftJoin->on('marks.schedule_id', '=', 'schedules.id')->where('schedules.student_class_id', $student->student_class_id)->where('marks.student_id', $student->id);
-        })->get();
-
+        $data['schedules']  = Schedule::with('course', 'teacher')->where('schedules.student_class_id', $student->student_class_id)->get();
         $data['scores'] = TestScores::where('student_id', $student->id)->get();
         return view('student.dashboard', $data);
     }

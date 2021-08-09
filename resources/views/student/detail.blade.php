@@ -17,8 +17,8 @@
                             <td>{{$student->name}}</td>
                         </tr>
                         <tr>
-                            <td>NIS</td>
-                            <td>{{$student->student_id}}</td>
+                            <td>NISN</td>
+                            <td>{{$student->student_id_second}}</td>
                         </tr>
                         <tr>
                             <td>Email</td>

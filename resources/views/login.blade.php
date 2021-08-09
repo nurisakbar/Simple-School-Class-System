@@ -102,7 +102,7 @@
         {
             $(".credentials").text('E-Mail Address');
         }else{
-            $(".credentials").text('NIS');
+            $(".credentials").text('NISN');
         }
     }
 </script>

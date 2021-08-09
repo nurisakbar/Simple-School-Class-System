@@ -65,7 +65,7 @@
                                 <td>
                                     <img src="https://img.icons8.com/bubbles/2x/user-male.png" width="50">
                                 </td>
-                                <td>{{$student->student_id}}</td>
+                                <td>{{$student->student_id_second}}</td>
                                 <td>{{$student->name}}</td>
                                 <td>{{$student->knowledge_value??0}}</td>
                                 <td>{{$student->skill_value??0}}</td>

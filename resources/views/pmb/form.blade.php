@@ -5,7 +5,7 @@
     </tr>
     <tr>
         <td>Jenis Kelamin</td>
-        <td>{!! Form::select('gender', ['M'=>'Laki Laki','F'=>'Perempuan'], null, ['class'=>'form-control']) !!}</td>
+        <td>{!! Form::select('gender', ['m'=>'Laki Laki','f'=>'Perempuan'], null, ['class'=>'form-control']) !!}</td>
     </tr>
     <tr>
         <td>NIK & No KK</td>

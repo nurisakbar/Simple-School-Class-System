@@ -14,7 +14,7 @@
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
-                                <th>NIS</th>
+                                <th>NISN</th>
                                 <th>Nama</th>
                                 <th>Kelas</th>
                                 <th>Email</th>
@@ -24,7 +24,7 @@
                         <tbody>
                             @foreach($students as $student)
                             <tr>
-                                <td>{{$student->student_id}}</td>
+                                <td>{{$student->student_id_second}}</td>
                                 <td>{{$student->name}}</td>
                                 <td>{{$student->class->name}}</td>
                                 <td>{{$student->email}}</td>

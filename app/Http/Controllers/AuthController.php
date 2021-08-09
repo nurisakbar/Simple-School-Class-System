@@ -22,7 +22,7 @@ class AuthController extends Controller
             return redirect()->intended('/');
         } elseif ($request->level=='teacher' && Auth::guard('teacher')->attempt($credentials)) {
             return redirect('my-schedule');
-        } elseif ($request->level=='student' && Auth::guard('student')->attempt(['student_id'=>$request->email,'password'=>$request->password])) {
+        } elseif ($request->level=='student' && Auth::guard('student')->attempt(['student_id_second'=>$request->email,'password'=>$request->password])) {
             return redirect('student-dashboard');
         }
 

@@ -66,6 +66,7 @@ class StudentClassController extends Controller
     public function edit(StudentClass $student, $id)
     {
         $data['class'] = $student->find($id);
+        $data['teachers'] = Teacher::pluck('name', 'id');
         return view('student-class.edit', $data);
     }
 
