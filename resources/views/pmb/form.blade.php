@@ -54,7 +54,8 @@
         <td></td>
         <td>
             
-            <img src="/pmb/{{ $pmb->photo}}" width="200">
+            {{-- <img src="/pmb/{{ $pmb->photo}}" width="200"> --}}
+            <img src="{{URL::to('/pmb/'.$pmb->photo)}}" width="200">
         </td>
     </tr>         
     @endif  
