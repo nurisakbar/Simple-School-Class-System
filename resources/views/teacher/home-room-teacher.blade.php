@@ -51,7 +51,7 @@
                         <thead>
                             <tr>
                                 <th width="60">Photo</th>
-                                <th width="100">NIDN</th>
+                                <th width="100">NIS</th>
                                 <th>Name</th>
                                 <th>Nilai Pengetahuan</th>
                                 <th>Nilai Keterampilan</th>
