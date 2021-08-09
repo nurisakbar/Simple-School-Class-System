@@ -23,7 +23,7 @@
     <tr style="border-color: white;">
         <td style="border-color: white;">NIS</td>
         <td style="border-color: white;">:</td>
-        <td style="border-color: white;">{{$student->student_id}}</td>
+        <td style="border-color: white;">{{$student->student_id_second}}</td>
         <td style="border-color: white;">Semester</td>
         <td style="border-color: white;">:</td>
         <td style="border-color: white;">Ganjil</td>
