@@ -27,16 +27,16 @@
                   <a class="nav-link" href="/page/home">Home</a>
               </li> --}}
               <li class="nav-item">
-                  <a class="nav-link" href="/page/prosedur">Prosedur Pendaftaran</a>
+                  <a class="nav-link" href="{{URL::to('/page/prosedur')}}">Prosedur Pendaftaran</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/page/persyaratan">Persyaratan</a>
+                  <a class="nav-link" href="{{URL::to('/page/persyaratan')}}">Persyaratan</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/pmb/register">Formulir Pendaftaran</a>
+                  <a class="nav-link" href="{{URL::to('/pmb/register')}}">Formulir Pendaftaran</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/pmb/hasil">Hasil Seleksi</a>
+                  <a class="nav-link" href="{{URL::to('/pmb/hasil')}}">Hasil Seleksi</a>
               </li>
           </ul>
        
@@ -46,14 +46,14 @@
           <ul class="navbar-nav ml-auto">
             @if(session('pmb_name')=='')
             <li class="nav-item">
-              <a class="nav-link" href="/pmb/login">Login Calon Siswa</a>
+              <a class="nav-link" href="{{URL::to('/pmb/login')}}">Login Calon Siswa</a>
             </li>
           @else
             <li class="nav-item">
               <a class="nav-link" href="#">{{session('pmb_name')}}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/pmb/logout">Logout</a>
+              <a class="nav-link" href="{{URL::to('/pmb/logout')}}">Logout</a>
             </li>
           @endif
           </ul>
