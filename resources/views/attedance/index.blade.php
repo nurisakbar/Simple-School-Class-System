@@ -11,18 +11,19 @@
                     <table class="table table-bordered">
                         <tr>
                             <td width="200">Mata Pelajaran</td>
-                            <td>{{$schedule->course->name}}</td>
+                            <td>{{$curiculum->course_name}}</td>
                         </tr>
                         <tr>
                             <td>Kelas</td>
-                            <td>{{$schedule->class->name}}</td>
+                            <td>{{$curiculum->student_class_name}}</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
                         </tr>
                     </table>
-                    <a href="/attedance/create?id={{ Request::segment(2) }}" class="btn btn-primary">Input Kehadiran</a>
+                    <a href="/attedance/create?course_id={{$curiculum->course_id}}&teacher_id={{$curiculum->teacher_id}}" class="btn btn-primary">Input Kehadiran</a>
+                    <a  class="btn btn-primary" href="/my-schedule?tab=kehadiran">Kembali</a>
                     <hr>
                     @include('alert')
                     <table class="table table-bordered" id="tabel-data">
@@ -36,12 +37,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($schedule->class->student as $student)
+                            @foreach($curiculum->students as $student)
                             <tr>
                                 <td>{{$student->student_id_second}}</td>
                                 <td>{{$student->name}}</td>
                                 @for($i=1;$i<=$jumlahKehadiran;$i++)
-                                    <td>{{ getAttendance($student->id, Request::segment(2), $i) }}</td>
+                                    <td>{{ getAttendance($student->id, $curiculum->course_id,$curiculum->teacher_id, $i) }}</td>
                                 @endfor
                             </tr>
                             @endforeach

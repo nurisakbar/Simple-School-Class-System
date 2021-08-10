@@ -30,19 +30,20 @@
                                 </tr>
                                 <tr>
                                     <th>Mata Pelajaran</th>
-                                    <th>{{$schedule->course->name}}</th>
+                                    <th>{{$curiculum->course_name}}</th>
                                 </tr>
                                 <tr>
                                     <th>Nama Guru</th>
-                                    <th>{{$schedule->teacher->name}}</th>
+                                    <th>{{$curiculum->teacher_name}}</th>
                                 </tr>
                             </table>
                         </div>
                 
                         <div class="col-md-8">
                             {!! Form::model($score,['url'=>'score']) !!}
-                            {!! Form::hidden('schedule_id', $schedule->id) !!}
-                            {!! Form::hidden('student_id', $student->id) !!}
+                            {!! Form::hidden('course_id', $curiculum->course_id) !!}
+                            {!! Form::hidden('teacher_id', $curiculum->teacher_id) !!}
+                            {!! Form::hidden('student_id', $student->student_id) !!}
                             {!! Form::hidden('student', $student->student_id) !!}
                             <table class="table table-bordered">
                                 <tr>
@@ -101,7 +102,7 @@
                                     <td></td>
                                     <td>
                                         <button type="submit" class="btn btn-info">Simpan</button>
-                                        <a href="/schedule/{{$schedule->id}}/score" class="btn btn-info">Kembali</a>
+                                        <a href="/schedule/{{$curiculum->course_id}}/score?teacher_id={{$curiculum->teacher_id}}" class="btn btn-info">Kembali</a>
                                     </td>
                                 </tr>
             
@@ -123,9 +124,11 @@
     function changeStudent()
     {
         var student_id = $("#student").val();
-        var schedule_id = {{ $schedule->id}};
+        var course_id = {{ $curiculum->course_id}};
+        var teacher_id = {{ $curiculum->teacher_id}};
         //console.log(schedule_id);
-        window.location.href = "/score/create?schedule_id="+schedule_id+"&student_id="+student_id;
+        //window.location.href = "/score/create?schedule_id="+schedule_id+"&student_id="+student_id;
+        window.location.href = "/score/create?course_id="+course_id+"&student_id="+student_id+"&semester=1&teacher_id="+teacher_id+"";
     }
 </script>
 @endpush

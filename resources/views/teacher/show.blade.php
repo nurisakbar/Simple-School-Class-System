@@ -45,6 +45,47 @@
                         @endif
                     </div>
                     <hr>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                          <a class="nav-link {{ $_GET['tab']=='jadwal'?'active':''}}" href="/my-schedule?tab=jadwal">Jadwal Mengajar</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link {{ $_GET['tab']=='kehadiran'?'active':''}}" href="/my-schedule?tab=kehadiran">Kelola Kehadiran</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link {{ $_GET['tab']=='nilai'?'active':''}}"" href="/my-schedule?tab=nilai">Kelola Nilai</a>
+                        </li>
+                      </ul>
+
+               <hr>
+                    @if($_GET['tab']=='nilai' or $_GET['tab']=='kehadiran')
+                    <table class="table table-bordered" id="tabel-data">
+                        <thead>
+                            <tr>
+                                <th width="10">Nomor</th>
+                                <th>Mata Pelajaran</th>
+                                <th>Kelas</th>
+                                <th width="100">Action</th>
+                            </tr>
+                            <tbody>
+                                @foreach($curiculums as $curiculum)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{$curiculum->course_name}}</td>
+                                    <td>{{$curiculum->student_class_name}}</td>
+                                    <td>
+                                        @if($_GET['tab']=='nilai')
+                                            <a href="/schedule/{{$curiculum->course_id}}/score?teacher_id={{$curiculum->teacher_id}}" class="btn btn-success btn-sm">Kelola Nilai</a>
+                                        @else 
+                                            <a href="/attedance/{{$curiculum->course_id}}?&teacher_id={{$curiculum->teacher_id}}" class="btn btn-success btn-sm">Kelola Kehadiran</a>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </thead>
+                    </table>
+                    @else
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
                             <tr>
@@ -52,7 +93,9 @@
                                 <th>Mata Pelajaran</th>
                                 <th>Nama Kelas</th>
                                 <th>Ruangan</th>
+                                @if(Auth::check())
                                 <th width="190">Action</th>
+                                @endif
                             </tr>
                         </thead>
                         @if(count($teacher->schedules)<1)
@@ -73,17 +116,13 @@
                                             <button class="btn btn-primary btn-sm" type="submit">Delete</button>
                                         {!! Form::close() !!}
                                         </td>
-                                    @else
-                                        <td>
-                                            <a href="/schedule/{{$schedule->id}}/score" class="btn btn-success btn-sm">Kelola Nilai</a>
-                                            <a href="/attedance/{{$schedule->id}}" class="btn btn-success btn-sm">Kelola Kehadiran</a>
-                                        </td>
                                     @endif
                                 </tr>
                             @endforeach
                         </tbody>
                         @endif
                     </table>
+                    @endif
                 </div>
             </div>
         </div>

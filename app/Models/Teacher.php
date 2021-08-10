@@ -20,6 +20,12 @@ class Teacher extends Authenticatable
         return $this->hasMany(\App\Models\Schedule::class);
     }
 
+    public function curiculum()
+    {
+        return $this->hasMany(\App\Models\Curiculum::class);
+    }
+
+    // walikelas
     public function studentClass()
     {
         return $this->hasOne(\App\Models\StudentClass::class);

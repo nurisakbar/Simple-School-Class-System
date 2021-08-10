@@ -13,12 +13,13 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <td width="200">Mata Pelajaran</td>
-                                    <td>{{$schedule->course->name}}</td>
-                                    <input type="hidden" id="schedule_id" value="{{$_GET['id']}}">
+                                    <td>{{$curiculum->course_name}}</td>
+                                    <input type="hidden" id="teacher_id" value="{{$curiculum->teacher_id}}">
+                                    <input type="hidden" id="course_id" value="{{$curiculum->course_id}}">
                                 </tr>
                                 <tr>
                                     <td>Kelas</td>
-                                    <td>{{$schedule->class->name}}</td>
+                                    <td>{{$curiculum->student_class_name}}</td>
                                 </tr>
                                 <tr>
                                     <td>Tanggal</td>
@@ -37,7 +38,7 @@
                                 <tr>
                                     <td></td>
                                     <td>
-                                        <a href="/attedance/{{ $_GET['id'] }}" class="btn btn-primary">Kembali</a>
+                                        <a href="/attedance/{{$curiculum->course_id}}?&teacher_id={{$curiculum->teacher_id}}" class="btn btn-primary">Kembali</a>
                                     </td>
                                 </tr>
                             </table>
@@ -52,7 +53,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($schedule->class->student as $student)
+                                    @foreach($curiculum->students as $student)
                                     <tr>
                                         <td>{{$student->student_id_second}}</td>
                                         <td>{{$student->name}}</td>
@@ -87,7 +88,8 @@
             var attedanceStatus = $("#student-"+id).val();
             var pertemuan       = $("#pertemuan").val();
             var date            = $("#date").val();
-            var scheduleId      = $("#schedule_id").val();
+            var course_id       = $("#course_id").val();
+            var teacher_id      = $("#teacher_id").val();
             if(date=='')
             {
                 alert('Silahkan Pilih Tanggal');
@@ -95,7 +97,7 @@
             }
             $.ajax({
                 url: "/attedance/store",
-                data:{student_id:id,status:attedanceStatus,meet_to:pertemuan,schedule_id:scheduleId,date:date},
+                data:{student_id:id,status:attedanceStatus,meet_to:pertemuan,course_id:course_id,date:date,teacher_id:teacher_id},
                 success: function (html) {
                     $("#results").append(html);
                     $.toast({

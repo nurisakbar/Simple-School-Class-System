@@ -82,7 +82,7 @@
     @foreach($testScores as $test)
     <tr>
         <td>{{ $loop->iteration }}</td>
-        <td>{{$test->schedule->course->name}}</td>
+        <td>{{$test->course->name}}</td>
         <td>{{$test->knowledge_value}}</td>
         <td>{{$test->knowledge_predicate}}</td>
         <td>{{$test->knowledge_description}}</td>

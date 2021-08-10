@@ -11,11 +11,12 @@ function getMark($studentId, $scheduleId, $field)
 }
 
 
-function getAttendance($studentId, $scheduleId, $meetTo)
+function getAttendance($studentId, $courseId, $teacherId, $meetTo)
 {
     $attedance = \DB::table('attedances')
                 ->where('student_id', $studentId)
-                ->where('schedule_id', $scheduleId)
+                ->where('course_id', $courseId)
+                ->where('teacher_id', $teacherId)
                 ->where('meet_to', $meetTo)
                 ->first();
     return $attedance->status??'-';

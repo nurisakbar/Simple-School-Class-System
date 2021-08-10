@@ -26,7 +26,7 @@ class ReportController extends Controller
             return redirect('home-room-teacher?semester=1')->with('message', 'Silahkan Input Data Hasil Ujian Dulu');
         }
         $data['extraCuriculer'] = $this->extraCuriculer;
-        $data['testScores']     = TestScores::where('semester', $_GET['semester'])->where('student_id', $student->id)->get();
+        $data['testScores']     = TestScores::where('semester', $_GET['semester'])->where('student_id', $student->student_id)->get();
         if ($_GET['type']=='pdf') {
             $pdf = \PDF::loadView('report.semester', $data);
             return $pdf->stream();

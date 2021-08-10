@@ -27,6 +27,7 @@
 
                     @include('alert')
                     <hr>
+
                     <h5>DAFTAR SISWA</h5>
                     {!! Form::open(['url'=>'home-room-teacher','method'=>'GET']) !!}
                     <table class="table table-bordered">
@@ -35,7 +36,7 @@
                             <td>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        {!! Form::select('semester', [1=>'Semester Ganjil',2=>'Semester Genap'], null, ['class'=>'form-control']) !!}
+                                        {!! Form::select('semester', [1=>'Semester Ganjil',2=>'Semester Genap'], $_GET['semester'], ['class'=>'form-control']) !!}
                                     </div>
                                     <div class="col-md-3">
                                         <button type="submit" class="btn btn-primary">Refresh</button>
@@ -71,7 +72,7 @@
                                 <td>{{$student->skill_value??0}}</td>
                                 <td>{{$student->semester??1}}</td>
                                 <td>
-                                    <a href="/report?student_id={{$student->student_id}}&type=input&semester=1" class="btn btn-primary">Input Raport</a>
+                                    <a href="/report?student_id={{$student->student_id}}&type=input&semester={{ $_GET['semester']}}" class="btn btn-primary">Input Raport</a>
                                     <a href="/report?student_id={{$student->student_id}}&type=pdf&semester={{ $_GET['semester']}}" class="btn btn-primary">Lihat Raport</a>
                                 </td>
                             </tr>

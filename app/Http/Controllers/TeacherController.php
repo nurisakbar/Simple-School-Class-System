@@ -142,15 +142,17 @@ class TeacherController extends Controller
         return view('teacher.dashboard');
     }
 
-    public function teacherSchedule()
+    public function teacherSchedule(Request $request)
     {
         $data['days']           = $this->day;
         $data['teachingTime']   = $this->teachingTime;
         $data['rooms']          = Room::pluck('name', 'id');
+        
         $data['courses']        = Course::pluck('name', 'id');
         $data['class']          = StudentClass::pluck('name', 'id');
         $data['teacher']        = Teacher::find(Auth::guard('teacher')->user()->id);
         $data['academicYear']   = AcademicYear::where('active', 'y')->first();
+        $data['curiculums']     = $data['teacher']->curiculum;
         return view('teacher.show', $data);
     }
 

@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title','Laporan Hasil Ujian Siswa Kelas '.$schedule->class->name)
+@section('title','Laporan Hasil Ujian Siswa Kelas '.$curiculum->student_class_name)
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Daftar Siswa Pada Kelas {{$schedule->class->name}}</div>
+                <div class="card-header">Daftar Siswa Pada Kelas {{$curiculum->student_class_name}}</div>
 
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -13,27 +13,23 @@
                             <th colspan="3">Informasi Guru</th>
                         </tr>
                         <tr>
-                            <td rowspan="5" width="200"><img src="{{$schedule->teacher->photo==null?'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg':'/teacher_photo/'.$schedule->teacher->photo}}" class="img-thumbnail" width="200"></td>
+                            <td rowspan="5" width="200"><img src="{{$curiculum->teacher_photo==null?'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg':'/teacher_photo/'.$curiculum->teacher_photo}}" class="img-thumbnail" width="200"></td>
                         </tr>
                         <tr>
                             <td width="200">Course</td>
-                            <td>{{$schedule->course->name}}</td>
+                            <td>{{$curiculum->course_name}}</td>
                         </tr>
                         <tr>
                             <td>Class</td>
-                            <td>{{$schedule->class->name}}, Room : {{$schedule->room->name}}</td>
+                            <td>{{$curiculum->student_class_name}}</td>
                         </tr>
                         <tr>
                             <td>Teacher</td>
-                            <td>{{$schedule->teacher->name}}</td>
-                        </tr>
-                        <tr>
-                            <td>Time</td>
-                            <td>{{$schedule->day.', '.$schedule->time}}</td>
+                            <td>{{$curiculum->teacher_name}}</td>
                         </tr>
                     </table>
 
-                    <h5>LIST STUDENT IN CLASS {{$schedule->class->name}}</h5>
+                    <h5>LIST STUDENT IN CLASS {{$curiculum->student_class_name}}</h5>
                     <hr>
                     <table class="table table-bordered" id="tabel-data">
                         <thead>
@@ -48,7 +44,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($students as $student)
+                            @foreach($curiculum->students as $student)
                             <tr>
                                 <td>
                                     <img src="{{$student->photo==null?'https://png.pngtree.com/element_our/png/20181206/users-vector-icon-png_260862.jpg':'/student_photo/'.$student->photo}}" width="50">
@@ -59,7 +55,7 @@
                                 <td>{{$student->skill_value??0}}</td>
                                 <td>{{$student->semester??1}}</td>
                                 <td>
-                                    <a href="/score/create?schedule_id={{$schedule->id}}&student_id={{$student->student_id}}&semester=1" class="btn btn-primary">Input</a>
+                                    <a href="/score/create?course_id={{$curiculum->course_id}}&student_id={{$student->student_id}}&semester=1&teacher_id={{$curiculum->teacher_id}}" class="btn btn-primary">Input</a>
                                 </td>
                             </tr>
                             @endforeach

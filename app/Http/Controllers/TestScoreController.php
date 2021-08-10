@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Schedule;
 use App\Models\Student;
 use App\Models\TestScores;
+use App\Models\Curiculum;
 
 class TestScoreController extends Controller
 {
@@ -16,33 +17,41 @@ class TestScoreController extends Controller
     
     public function index($id)
     {
-        $schedule         = Schedule::findOrFail($id);
-        $data['schedule'] = $schedule;
-        $data['students'] = Schedule::select('students.name', 'students.photo', 'students.student_id', 'students.student_id_second', 'test_scores.knowledge_value', 'test_scores.skill_value', 'test_scores.semester')->leftJoin('students', 'students.student_class_id', 'schedules.student_class_id')
-        ->leftJoin('test_scores', function ($join) {
-            $join->on('schedules.id', '=', 'test_scores.schedule_id')->on('students.id', 'test_scores.student_id')->where('test_scores.semester', 1);
-        })->where('schedules.id', $id)->get();
+        $data['curiculum']          = Curiculum::where('course_id', $id)
+                                        ->where('teacher_id', $_GET['teacher_id'])
+                                        ->first();
         return view('test-score.index', $data);
     }
 
     public function create()
     {
-        $id                 = $_GET['schedule_id'];
+        $course_id          = $_GET['course_id'];
+        $teacher_id         = $_GET['teacher_id'];
         $student_id         = $_GET['student_id'];
         $data['predicate']  = ['A'=>'A','B'=>'B','C'=>'C'];
         $data['semester']  = ['1'=>'Semester 1','2'=>'Semester 2'];
-        $schedule           = Schedule::findOrFail($id);
-        $data['schedule']   = $schedule;
-        $data['students']   = $schedule->class->student->pluck('name', 'student_id');
+        $data['curiculum']          = Curiculum::where('course_id', $course_id)
+                                        ->where('teacher_id', $_GET['teacher_id'])
+                                        ->first();
+        $data['students']   = $data['curiculum']->students->pluck('name', 'student_id');
         $data['student']    = Student::where('student_id', $student_id)->first();
-        $data['score']      = TestScores::where('student_id', $data['student']->id)->where('schedule_id', $id)->first();
+        $data['score']      = TestScores::where('student_id', $data['student']->student_id)
+                                ->where('course_id', $course_id)
+                                ->where('teacher_id', $teacher_id)
+                                ->first();
         return view('test-score.create', $data);
     }
 
     public function store(Request $request)
     {
-        $ifExist = ['semester'=>$request->semester,'schedule_id'=>$request->schedule_id,'student_id'=>$request->student_id];
+        $ifExist = [
+            'semester'      =>  $request->semester,
+            'teacher_id'    =>  $request->teacher_id,
+            'student_id'    =>  $request->student_id,
+            'course_id'     =>  $request->course_id
+        ];
+        
         TestScores::updateOrCreate($ifExist, $request->all());
-        return redirect('/score/create?schedule_id='.$request->schedule_id.'&student_id='.$request->student)->with('message', 'Nilai Sudah Disimpan');
+        return redirect('/score/create?course_id='.$request->course_id.'&student_id='.$request->student_id.'&semester='.$request->semester.'&teacher_id='.$request->teacher_id)->with('message', 'Nilai Sudah Disimpan');
     }
 }

@@ -21,7 +21,7 @@ class AuthController extends Controller
         if ($request->level=='admin' && Auth::attempt($credentials)) {
             return redirect()->intended('/');
         } elseif ($request->level=='teacher' && Auth::guard('teacher')->attempt($credentials)) {
-            return redirect('my-schedule');
+            return redirect('my-schedule?tab=jadwal');
         } elseif ($request->level=='student' && Auth::guard('student')->attempt(['student_id_second'=>$request->email,'password'=>$request->password])) {
             return redirect('student-dashboard');
         }
