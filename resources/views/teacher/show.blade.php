@@ -76,7 +76,7 @@
                                         <td>{{$curiculum->student_class_name}}</td>
                                         <td>
                                             @if($_GET['tab']=='nilai')
-                                                <a href="/schedule/{{$curiculum->course_id}}/score" class="btn btn-success btn-sm">Kelola Nilai</a>
+                                                <a href="/schedule/{{$curiculum->course_id}}/score?teacher_id={{$curiculum->teacher_id}}" class="btn btn-success btn-sm">Kelola Nilai</a>
                                             @else 
                                                 <a href="/attedance/{{$curiculum->course_id}}?&teacher_id={{$curiculum->teacher_id}}" class="btn btn-success btn-sm">Kelola Kehadiran</a>
                                             @endif
