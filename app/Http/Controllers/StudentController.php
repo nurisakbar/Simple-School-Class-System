@@ -150,7 +150,7 @@ class StudentController extends Controller
         $student            = Auth::guard('student')->user();
         $data['student']    = $student;
         $data['schedules']  = Schedule::with('course', 'teacher')->where('schedules.student_class_id', $student->student_class_id)->get();
-        $data['scores'] = TestScores::where('student_id', $student->id)->get();
+        $data['scores']     = TestScores::where('student_id', $student->student_id)->get();
         return view('student.dashboard', $data);
     }
 }

@@ -16,4 +16,9 @@ class TestScores extends Model
     {
         return $this->belongsTo(\App\Models\Course::class);
     }
+
+    public function teacher()
+    {
+        return $this->belongsTo(\App\Models\Teacher::class);
+    }
 }

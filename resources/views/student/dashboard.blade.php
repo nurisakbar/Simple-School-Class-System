@@ -30,8 +30,8 @@
                         @foreach($scores as $score)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$score->schedule->course->name}}</td>
-                                <td>{{$score->schedule->teacher->name}}</td>
+                                <td>{{$score->course->name}}</td>
+                                <td>{{$score->teacher->name}}</td>
                                 <td>{{$score->knowledge_value}} / {{$score->knowledge_predicate}}</td>
                                 <td>{{$score->skill_value}} / {{$score->skill_predicate}}</td>
                                 <td>{{$score->semester}}</td>
