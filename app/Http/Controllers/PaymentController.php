@@ -72,6 +72,7 @@ class PaymentController extends Controller
     {
         $data['payment'] = Payment::all();
         $data['payment'] = $payment;
+        $data['student'] = Student::pluck('name', 'id');
         return view('payment.edit', $data);
     }
 
